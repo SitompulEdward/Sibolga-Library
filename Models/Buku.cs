@@ -17,6 +17,7 @@ namespace Sibolga_Library.Models
         public string Tahun_Terbit { get; set; }
         public int Stock { get; set; }
         public string Email_Pemasok { get; set; }
+        public string Gambar { get; set; }
 
         [ForeignKey("Email_Pemasok")]
         public Pemasok FkPemasok { get; set; }

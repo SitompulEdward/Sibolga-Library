@@ -17,6 +17,7 @@ namespace Sibolga_Library.Models
 
         [ForeignKey("PeminjamanId")]
         public Peminjaman FkPeminjaman { get; set; }
+
         [ForeignKey("BukuId")]
         public Buku FkBuku { get; set; }
     }
