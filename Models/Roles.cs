@@ -9,7 +9,7 @@ namespace Sibolga_Library.Models
     public class Roles
     {
         [Key]
-        public String Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
     }
 }

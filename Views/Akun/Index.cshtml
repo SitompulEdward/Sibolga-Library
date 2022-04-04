@@ -390,7 +390,7 @@
                         </li>
                     </ul>
                     <div id="hom-vijay" class="col s12">
-                        <form asp-action="DaftarUser" class="col s12">
+                        <form asp-action="DaftarUser" class="col s12" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input asp-for="@Model.user.Nama_Lengkap" type="text" class="validate">
@@ -423,7 +423,7 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input type="file" class="validate" style="padding: 10px 10px">
+                                    <input type="file" name="image" accept=".jpg, .png, .svg" multiple  class="validate" style="padding: 10px 10px">
                                 </div>
                             </div>
                             <div class="row">
@@ -444,7 +444,7 @@
                     </div>
 
                     <div id="hom_log" class="col s12">
-                        <form asp-action="DaftarPemasok" class="col s12">
+                        <form asp-action="DaftarPemasok" class="col s12" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input asp-for="@Model.pemasok.Nama_Lengkap" type="text" class="validate">
@@ -477,7 +477,7 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input type="file" class="validate" style="padding: 10px 10px">
+                                    <input type="file" name="image" accept=".jpg, .png, .svg" multiple class="validate" style="padding: 10px 10px">
                                 </div>
                             </div>
                             <div class="row">
@@ -787,16 +787,16 @@
                 </a>
                 <h4>Login</h4>
                 <p>Don't have an account? Create your account. It's take less then a minutes</p>
-                <form class="s12">
+                <form asp-action="Login" class="s12">
                     <div>
                         <div class="input-field s12">
-                            <input type="text" data-ng-model="name" class="validate">
+                            <input asp-for="@Model.login.Email" type="text" data-ng-model="name" class="validate">
                             <label>User name</label>
                         </div>
                     </div>
                     <div>
                         <div class="input-field s12">
-                            <input type="password" class="validate">
+                            <input asp-for="@Model.login.Password" type="password" class="validate">
                             <label>Password</label>
                         </div>
                     </div>

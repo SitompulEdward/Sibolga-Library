@@ -9,7 +9,7 @@ using Sibolga_Library.Data;
 namespace Sibolga_Library.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220401163426_all_table")]
+    [Migration("20220404163105_all_table")]
     partial class all_table
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,6 +50,28 @@ namespace Sibolga_Library.Migrations
                     b.HasIndex("RolesId");
 
                     b.ToTable("Admin");
+                });
+
+            modelBuilder.Entity("Sibolga_Library.Models.AksesLogin", b =>
+                {
+                    b.Property<int>("No")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("text");
+
+                    b.Property<string>("RolesId")
+                        .HasColumnType("varchar(767)");
+
+                    b.HasKey("No");
+
+                    b.HasIndex("RolesId");
+
+                    b.ToTable("Akses_Login");
                 });
 
             modelBuilder.Entity("Sibolga_Library.Models.Buku", b =>
@@ -317,6 +339,15 @@ namespace Sibolga_Library.Migrations
                         .HasForeignKey("RolesId");
 
                     b.Navigation("FkRoles");
+                });
+
+            modelBuilder.Entity("Sibolga_Library.Models.AksesLogin", b =>
+                {
+                    b.HasOne("Sibolga_Library.Models.Roles", "Roles")
+                        .WithMany()
+                        .HasForeignKey("RolesId");
+
+                    b.Navigation("Roles");
                 });
 
             modelBuilder.Entity("Sibolga_Library.Models.Buku", b =>

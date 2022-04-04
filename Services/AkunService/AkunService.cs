@@ -1,4 +1,5 @@
-﻿using Sibolga_Library.Helper;
+﻿using Microsoft.AspNetCore.Http;
+using Sibolga_Library.Helper;
 using Sibolga_Library.Models;
 using Sibolga_Library.Repositories.AkunRepository;
 using System;
@@ -11,28 +12,58 @@ namespace Sibolga_Library.Services.AkunService
     public class AkunService : IAkunService
     {
         private readonly IAkunRepository _akunRepo;
-        public AkunService(IAkunRepository repo)
+        private readonly FileService _file;
+        public AkunService(IAkunRepository repo, FileService file)
         {
             _akunRepo = repo;
+            _file = file;
+        }
+        public bool createAksesLoginPemasok(GabungModel gabungModel)
+        {
+            Roles role = _akunRepo.GetRolesPemasok().Result;
+
+            var akses = new AksesLogin()
+            {
+                Email = gabungModel.pemasok.Email,
+                Password = gabungModel.pemasok.Password,
+                Roles = role
+            };
+
+            return _akunRepo.AksesLogin(akses).Result;
         }
 
-        public bool CreatePemasok(GabungModel gabungModel)
+        public bool createAksesLoginUser(GabungModel gabungModel)
+        {
+            Roles role = _akunRepo.GetRolesUser().Result;
+
+            var akses = new AksesLogin()
+            {
+                Email = gabungModel.user.Email,
+                Password = gabungModel.user.Password,
+                Roles = role
+            };
+
+            return _akunRepo.AksesLogin(akses).Result;
+        }
+
+        public bool CreatePemasok(GabungModel gabungModel, IFormFile file)
         {
             var ambilData = BanyakBantuan.BuatPemasok(gabungModel);
 
             _akunRepo.GetPemasokId(gabungModel);
 
-            var role = "2";
-            gabungModel.pemasok.RolesId = role;
+            gabungModel.pemasok.Gambar = _file.SimpanFile(file).Result;
 
             return _akunRepo.BuatPemasokAsync(gabungModel.pemasok).Result;
         }
 
-        public bool CreateUser(GabungModel gabungModel)
+        public bool CreateUser(GabungModel gabungModel, IFormFile file)
         {
             var ambilData = BanyakBantuan.BuatUser(gabungModel);
 
             _akunRepo.GetUserId(gabungModel);
+
+            gabungModel.user.Gambar = _file.SimpanFile(file).Result;
 
             var role = "3";
             gabungModel.user.RolesId = role;

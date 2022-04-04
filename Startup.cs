@@ -31,9 +31,18 @@ namespace Sibolga_Library
                 o.UseMySQL(Configuration.GetConnectionString("mysql"));
             });
 
+            services.AddAuthentication("CookieAuth").
+                AddCookie("CookieAuth", option =>
+                {
+                    //option.LoginPath = "Akun";
+                    //option.AccessDeniedPath = "Akun/Dilarang";
+                });
+
             services.AddScoped<IAkunRepository, AkunRepository>();
            
             services.AddScoped<IAkunService, AkunService>();
+
+            services.AddTransient<FileService>();
 
             services.AddControllersWithViews();
         }
@@ -52,6 +61,8 @@ namespace Sibolga_Library
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

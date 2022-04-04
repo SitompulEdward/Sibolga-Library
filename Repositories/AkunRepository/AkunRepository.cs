@@ -38,7 +38,6 @@ namespace Sibolga_Library.Repositories.AkunRepository
         public async Task<bool> GetPemasokId(GabungModel gabungModel)
         {
             string[] Id = await _akunDb.Pemasok.Select(x => x.Pemasok_Id).ToArrayAsync();
-
             BuatPrimary.PrimaryPemasok(gabungModel, Id);
 
             return true;
@@ -50,6 +49,24 @@ namespace Sibolga_Library.Repositories.AkunRepository
             await _akunDb.SaveChangesAsync();
 
             return true;
+        }
+
+        public async Task<bool> AksesLogin(AksesLogin data)
+        {
+            _akunDb.Add(data);
+            await _akunDb.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<Roles> GetRolesPemasok()
+        {   
+            return await _akunDb.Roles.Where(x => x.Id == "2").FirstOrDefaultAsync();
+        }
+
+        public async Task<Roles> GetRolesUser()
+        {
+            return await _akunDb.Roles.Where(x => x.Id == "3").FirstOrDefaultAsync();
         }
     }
 }

@@ -15,6 +15,7 @@ namespace Sibolga_Library.Data
 
         }
         public virtual DbSet<Roles> Roles { get; set; }
+        public virtual DbSet<AksesLogin> Akses_Login { get; set; }
         public virtual DbSet<Admin> Admin { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Pemasok> Pemasok { get; set; }
