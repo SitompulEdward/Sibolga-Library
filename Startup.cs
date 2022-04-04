@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Sibolga_Library.Data;
+using Sibolga_Library.Repositories.AkunRepository;
+using Sibolga_Library.Services.AkunService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +30,10 @@ namespace Sibolga_Library
             {
                 o.UseMySQL(Configuration.GetConnectionString("mysql"));
             });
+
+            services.AddScoped<IAkunRepository, AkunRepository>();
+           
+            services.AddScoped<IAkunService, AkunService>();
 
             services.AddControllersWithViews();
         }
@@ -68,7 +74,7 @@ namespace Sibolga_Library
 
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Akun}/{action=Index}/{id?}");
             });
         }
     }

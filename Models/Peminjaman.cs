@@ -11,11 +11,11 @@ namespace Sibolga_Library.Models
     {
         [Key]
         public string Id { get; set; }
-        public string Email_Peminjam { get; set; }
+        public string User_Id { get; set; }
         public DateTime Tgl_Peminjaman { get; set; }
         public DateTime Jatuh_Tempo { get; set; }
 
-        [ForeignKey("Email_Peminjam")]
-        public User FkEmail { get; set; }
+        [ForeignKey("User_Id")]
+        public User FkUserId { get; set; }
     }
 }

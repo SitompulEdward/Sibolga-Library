@@ -25,5 +25,29 @@ namespace Sibolga_Library.Data
         public virtual DbSet<Detail_Peminjaman> Detail_Peminjaman { get; set; }
         public virtual DbSet<Detail_Pemasok> Detail_Pemasok { get; set; }
         public virtual DbSet<Riwayat_Penarikan> Riwayat_Penarikan { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Roles>().HasData(new Roles[]
+            {
+                new Roles
+                {
+                    Id = "1",
+                    Name = "Admin"
+                },
+                new Roles
+                {
+                    Id = "2",
+                    Name = "Pemasok"
+                },
+                new Roles
+                {
+                    Id = "3",
+                    Name = "User"
+                }
+            });
+        }
     }
 }

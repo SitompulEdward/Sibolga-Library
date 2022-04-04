@@ -9,8 +9,8 @@ using Sibolga_Library.Data;
 namespace Sibolga_Library.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220331030327_new")]
-    partial class @new
+    [Migration("20220401163426_all_table")]
+    partial class all_table
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,10 +21,16 @@ namespace Sibolga_Library.Migrations
 
             modelBuilder.Entity("Sibolga_Library.Models.Admin", b =>
                 {
-                    b.Property<string>("Email")
+                    b.Property<string>("Admin_Id")
                         .HasColumnType("varchar(767)");
 
                     b.Property<string>("Alamat")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Gambar")
                         .HasColumnType("text");
 
                     b.Property<string>("Nama_Lengkap")
@@ -39,7 +45,7 @@ namespace Sibolga_Library.Migrations
                     b.Property<string>("RolesId")
                         .HasColumnType("varchar(767)");
 
-                    b.HasKey("Email");
+                    b.HasKey("Admin_Id");
 
                     b.HasIndex("RolesId");
 
@@ -51,14 +57,14 @@ namespace Sibolga_Library.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("varchar(767)");
 
-                    b.Property<string>("Email_Pemasok")
-                        .HasColumnType("varchar(767)");
-
                     b.Property<string>("Gambar")
                         .HasColumnType("text");
 
                     b.Property<string>("Judul_Buku")
                         .HasColumnType("text");
+
+                    b.Property<string>("Pemasok_Id")
+                        .HasColumnType("varchar(767)");
 
                     b.Property<string>("Penerbit")
                         .HasColumnType("text");
@@ -74,7 +80,7 @@ namespace Sibolga_Library.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Email_Pemasok");
+                    b.HasIndex("Pemasok_Id");
 
                     b.ToTable("Buku");
                 });
@@ -85,15 +91,15 @@ namespace Sibolga_Library.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Email_Pemasok")
-                        .HasColumnType("varchar(767)");
-
                     b.Property<int>("Jumlah_Poin")
                         .HasColumnType("int");
 
+                    b.Property<string>("Pemasok_Id")
+                        .HasColumnType("varchar(767)");
+
                     b.HasKey("No");
 
-                    b.HasIndex("Email_Pemasok");
+                    b.HasIndex("Pemasok_Id");
 
                     b.ToTable("Detail_Pemasok");
                 });
@@ -124,10 +130,16 @@ namespace Sibolga_Library.Migrations
 
             modelBuilder.Entity("Sibolga_Library.Models.Pemasok", b =>
                 {
-                    b.Property<string>("Email")
+                    b.Property<string>("Pemasok_Id")
                         .HasColumnType("varchar(767)");
 
                     b.Property<string>("Alamat")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Gambar")
                         .HasColumnType("text");
 
                     b.Property<string>("Nama_Lengkap")
@@ -142,7 +154,7 @@ namespace Sibolga_Library.Migrations
                     b.Property<string>("RolesId")
                         .HasColumnType("varchar(767)");
 
-                    b.HasKey("Email");
+                    b.HasKey("Pemasok_Id");
 
                     b.HasIndex("RolesId");
 
@@ -176,18 +188,18 @@ namespace Sibolga_Library.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("varchar(767)");
 
-                    b.Property<string>("Email_Peminjam")
-                        .HasColumnType("varchar(767)");
-
                     b.Property<DateTime>("Jatuh_Tempo")
                         .HasColumnType("datetime");
 
                     b.Property<DateTime>("Tgl_Peminjaman")
                         .HasColumnType("datetime");
 
+                    b.Property<string>("User_Id")
+                        .HasColumnType("varchar(767)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("Email_Peminjam");
+                    b.HasIndex("User_Id");
 
                     b.ToTable("Peminjaman");
                 });
@@ -219,18 +231,18 @@ namespace Sibolga_Library.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Email_Pemasok")
-                        .HasColumnType("varchar(767)");
-
                     b.Property<int>("Jumlah_Poin")
                         .HasColumnType("int");
+
+                    b.Property<string>("Pemasok_Id")
+                        .HasColumnType("varchar(767)");
 
                     b.Property<DateTime>("Tgl_Penarikan")
                         .HasColumnType("datetime");
 
                     b.HasKey("No");
 
-                    b.HasIndex("Email_Pemasok");
+                    b.HasIndex("Pemasok_Id");
 
                     b.ToTable("Riwayat_Penarikan");
                 });
@@ -246,14 +258,37 @@ namespace Sibolga_Library.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            Name = "Admin"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            Name = "Pemasok"
+                        },
+                        new
+                        {
+                            Id = "3",
+                            Name = "User"
+                        });
                 });
 
             modelBuilder.Entity("Sibolga_Library.Models.User", b =>
                 {
-                    b.Property<string>("Email")
+                    b.Property<string>("User_Id")
                         .HasColumnType("varchar(767)");
 
                     b.Property<string>("Alamat")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Gambar")
                         .HasColumnType("text");
 
                     b.Property<string>("Nama_Lengkap")
@@ -268,7 +303,7 @@ namespace Sibolga_Library.Migrations
                     b.Property<string>("RolesId")
                         .HasColumnType("varchar(767)");
 
-                    b.HasKey("Email");
+                    b.HasKey("User_Id");
 
                     b.HasIndex("RolesId");
 
@@ -286,20 +321,20 @@ namespace Sibolga_Library.Migrations
 
             modelBuilder.Entity("Sibolga_Library.Models.Buku", b =>
                 {
-                    b.HasOne("Sibolga_Library.Models.Pemasok", "FkPemasok")
+                    b.HasOne("Sibolga_Library.Models.Pemasok", "FkPemasokId")
                         .WithMany()
-                        .HasForeignKey("Email_Pemasok");
+                        .HasForeignKey("Pemasok_Id");
 
-                    b.Navigation("FkPemasok");
+                    b.Navigation("FkPemasokId");
                 });
 
             modelBuilder.Entity("Sibolga_Library.Models.Detail_Pemasok", b =>
                 {
-                    b.HasOne("Sibolga_Library.Models.Pemasok", "FkEmail")
+                    b.HasOne("Sibolga_Library.Models.Pemasok", "FkPemasokId")
                         .WithMany()
-                        .HasForeignKey("Email_Pemasok");
+                        .HasForeignKey("Pemasok_Id");
 
-                    b.Navigation("FkEmail");
+                    b.Navigation("FkPemasokId");
                 });
 
             modelBuilder.Entity("Sibolga_Library.Models.Detail_Peminjaman", b =>
@@ -337,11 +372,11 @@ namespace Sibolga_Library.Migrations
 
             modelBuilder.Entity("Sibolga_Library.Models.Peminjaman", b =>
                 {
-                    b.HasOne("Sibolga_Library.Models.User", "FkEmail")
+                    b.HasOne("Sibolga_Library.Models.User", "FkUserId")
                         .WithMany()
-                        .HasForeignKey("Email_Peminjam");
+                        .HasForeignKey("User_Id");
 
-                    b.Navigation("FkEmail");
+                    b.Navigation("FkUserId");
                 });
 
             modelBuilder.Entity("Sibolga_Library.Models.Pengembalian", b =>
@@ -355,11 +390,11 @@ namespace Sibolga_Library.Migrations
 
             modelBuilder.Entity("Sibolga_Library.Models.Riwayat_Penarikan", b =>
                 {
-                    b.HasOne("Sibolga_Library.Models.Pemasok", "FkEmail")
+                    b.HasOne("Sibolga_Library.Models.Pemasok", "FkPemasokId")
                         .WithMany()
-                        .HasForeignKey("Email_Pemasok");
+                        .HasForeignKey("Pemasok_Id");
 
-                    b.Navigation("FkEmail");
+                    b.Navigation("FkPemasokId");
                 });
 
             modelBuilder.Entity("Sibolga_Library.Models.User", b =>

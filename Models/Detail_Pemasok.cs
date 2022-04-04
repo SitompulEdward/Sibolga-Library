@@ -11,10 +11,10 @@ namespace Sibolga_Library.Models
     {
         [Key]
         public int No { get; set; }
-        public string Email_Pemasok { get; set; }
+        public string Pemasok_Id { get; set; }
         public int Jumlah_Poin { get; set; }
 
-        [ForeignKey("Email_Pemasok")]
-        public Pemasok FkEmail { get; set; }
+        [ForeignKey("Pemasok_Id")]
+        public Pemasok FkPemasokId { get; set; }
     }
 }

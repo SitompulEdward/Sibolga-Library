@@ -16,10 +16,10 @@ namespace Sibolga_Library.Models
         public string Penerbit { get; set; }
         public string Tahun_Terbit { get; set; }
         public int Stock { get; set; }
-        public string Email_Pemasok { get; set; }
+        public string Pemasok_Id { get; set; }
         public string Gambar { get; set; }
 
-        [ForeignKey("Email_Pemasok")]
-        public Pemasok FkPemasok { get; set; }
+        [ForeignKey("Pemasok_Id")]
+        public Pemasok FkPemasokId { get; set; }
     }
 }

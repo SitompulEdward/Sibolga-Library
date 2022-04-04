@@ -10,14 +10,28 @@ namespace Sibolga_Library.Models
     public class User
     {
         [Key]
+        public string User_Id { get; set; }
         public string Email { get; set; }
         public string Nama_Lengkap { get; set; }
         public string Password { get; set; }
         public string No_Telp { get; set; }
         public string Alamat { get; set; }
+        public string Gambar { get; set; }
         public string RolesId { get; set; }
 
         [ForeignKey ("RolesId")]
         public Roles FkRoles { get; set; }
+    }
+
+    public class UserForm
+    {
+        public string User_Id { get; set; }
+        public string Email { get; set; }
+        public string Nama_Lengkap { get; set; }
+        public string Password { get; set; }
+        public string No_Telp { get; set; }
+        public string Alamat { get; set; }
+        public string Gambar { get; set; }
+        public string RolesId { get; set; }
     }
 }
