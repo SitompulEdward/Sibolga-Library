@@ -9,7 +9,7 @@ namespace Sibolga_Library.Areas.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [Area("Admin")]
 
 

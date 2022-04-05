@@ -1,7 +1,5 @@
 ﻿@model GabungModel
-
-
- <!-- SLIDER -->
+<!-- SLIDER -->
 <section>
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Wrapper for slides -->
@@ -390,105 +388,131 @@
                         </li>
                     </ul>
                     <div id="hom-vijay" class="col s12">
-                        <form asp-action="DaftarUser" class="col s12" enctype="multipart/form-data">
+                        <form asp-action="DaftarUser" class="col s12" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input asp-for="@Model.user.Nama_Lengkap" type="text" class="validate">
-                                    <label>Username</label>
+                                    <input asp-for="@Model.user.Nama_Lengkap" type="text" class="validate" required>
+                                    <label>Nama Lengkap</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input asp-for="@Model.user.Email" type="text" class="validate">
-                                    <label>Email id</label>
+                                    <input asp-for="@Model.user.Email" id="email-user" type="text" class="validate" required>
+                                    <label>Email</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input asp-for="@Model.user.Password" type="password" class="validate">
+                                    <input asp-for="@Model.user.Password" type="password" class="validate" required>
                                     <label>Password</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input asp-for="@Model.user.No_Telp" type="text" class="validate">
+                                    <input asp-for="@Model.user.No_Telp" type="text" class="validate" required>
                                     <label>No Telp</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input asp-for="@Model.user.Alamat" type="text" class="validate">
+                                    <input asp-for="@Model.user.Alamat" type="text" id="email-user" class="validate" required>
                                     <label>Address</label>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="input-field col s12">
-                                    <input type="file" name="image" accept=".jpg, .png, .svg" multiple  class="validate" style="padding: 10px 10px">
+                                <div class="file-field input-field col s12">
+                                    <div class="btn admin-upload-btn">
+                                        <span>Foto</span>
+                                        <input type="file" name="image" accept=".jpg, .png, .svg" multiple required>
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text" placeholder="Profile image">
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input type="text" class="validate">
+                                    <input type="text" name="otp" id="otp" required>
                                     <label>Code OTP</label>
                                 </div>
                             </div>
+                            <div class="input-group mb-3">
+                                <div class="d-flex justify-content-end mb-4">
+                                    <button type="button" id="email-btn" class="btn btn-success" style="margin-left:227px; margin-top:-77px; height:42px;">
+                                        Send OTP
+                                    </button>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input type="button" value="Send OTP" class="waves-effect waves-light light-btn">
+                                    <input type="reset" class="waves-effect waves-light light-btn" value="Clear Form" />
                                 </div>
                                 <div class="input-field col s12">
-                                    <input type="submit" value="Register" class="waves-effect waves-light light-btn">
+                                    <input type="submit" value="Register" id="btn-submit" class="waves-effect waves-light light-btn">
                                 </div>
                             </div>
                         </form>
                     </div>
 
                     <div id="hom_log" class="col s12">
-                        <form asp-action="DaftarPemasok" class="col s12" enctype="multipart/form-data">
+                        <form asp-action="DaftarPemasok" class="col s12" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input asp-for="@Model.pemasok.Nama_Lengkap" type="text" class="validate">
-                                    <label>Username</label>
+                                    <input asp-for="@Model.pemasok.Nama_Lengkap" type="text" class="validate" required>
+                                    <label>Nama Lengkap</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input asp-for="@Model.pemasok.Email" type="text" class="validate">
-                                    <label>Email id</label>
+                                    <input asp-for="@Model.pemasok.Email" id="email-pemasok" class="validate" required>
+                                    <label>Email</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input asp-for="@Model.pemasok.Password" type="password" class="validate">
+                                    <input asp-for="@Model.pemasok.Password" type="password" class="validate" required>
                                     <label>Password</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input asp-for="@Model.pemasok.No_Telp" type="text" class="validate">
+                                    <input asp-for="@Model.pemasok.No_Telp" type="text" class="validate" required>
                                     <label>No Telp</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input asp-for="@Model.pemasok.Alamat" type="text" class="validate">
+                                    <input asp-for="@Model.pemasok.Alamat" type="text" class="validate" required>
                                     <label>Address</label>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="input-field col s12">
-                                    <input type="file" name="image" accept=".jpg, .png, .svg" multiple class="validate" style="padding: 10px 10px">
+                                <div class="file-field input-field col s12">
+                                    <div class="btn admin-upload-btn">
+                                        <span>Foto</span>
+                                        <input type="file" name="image" accept=".jpg, .png, .svg" multiple required>
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text" placeholder="Profile image">
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input type="text" class="validate">
+                                    <input type="text" name="otp" id="otp" class="validate" required>
                                     <label>Code OTP</label>
                                 </div>
                             </div>
+                            <div class="input-group mb-3">
+                                <div class="d-flex justify-content-end mb-4">
+                                    <button type="button" id="email-btn-pemasok" class="btn btn-success" style="margin-left:227px; margin-top:-77px; height:42px;">
+                                        Send OTP
+                                    </button>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input type="button" value="Send OTP" class="waves-effect waves-light light-btn">
+                                    <input type="reset" class="waves-effect waves-light light-btn" value="Clear Form" />
                                 </div>
                                 <div class="input-field col s12">
                                     <input type="submit" value="Register" class="waves-effect waves-light light-btn">
@@ -528,15 +552,6 @@
 <!-- FOOTER -->
 <section class="wed-hom-footer">
     <div class="container">
-        <!--<div class="row">
-            <div class="col-md-12">
-            <h4>About Wedding Planner</h4>
-            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum</p>
-            <p>more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p>
-            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-            <p></p>
-          </div>
-          </div>-->
         <div class="row wed-foot-link">
             <div class="col-md-4 foot-tc-mar-t-o">
                 <h4>Top Courses</h4>
@@ -760,3 +775,86 @@
         </ul>
     </div>
 </section>
+
+@section Scripts{
+    <script>
+
+        let ambilNilai = () => {
+            // #Email artinya id pada <input asp-for="Email"
+            return $("#email-user").val();
+        }
+
+        $(document).ready(function () {
+            $("#email-btn").click(function (e) {
+
+                // alert
+                swal({
+                    title: "Mohon Tunggu",
+                    text: "Sedang mengirim email",
+                    icon: "info",
+                    button: "Baik",
+                });
+
+                // method post
+                // NamaController/NamaFunction
+                $.post("/Akun/KirimEmailOTP",
+                    {
+                        // harus sama dengan parameter di fungsi KirimEmailOTP
+                        tujuanEmail: ambilNilai()
+                    },
+                    function (returnya) {
+                        // alert
+                        swal({
+                            title: returnya.result == true ? "Gagal" : "Sukses",
+                            text: returnya.message,
+                            icon: returnya.result == true ? "error" : "success",
+                            button: "Baik",
+                            closeOnClickOutside: false,
+                        });
+                    });
+
+
+            })
+
+        })
+
+        let ambilNilai2 = () => {
+            // #Email artinya id pada <input asp-for="Email"
+            return $("#email-pemasok").val();
+        }
+
+        $(document).ready(function () {
+            $("#email-btn-pemasok").click(function (e) {
+
+                // alert
+                swal({
+                    title: "Mohon Tunggu",
+                    text: "Sedang mengirim email",
+                    icon: "info",
+                    button: "Baik",
+                });
+
+                // method post
+                // NamaController/NamaFunction
+                $.post("/Akun/KirimEmailOTP",
+                    {
+                        // harus sama dengan parameter di fungsi KirimEmailOTP
+                        tujuanEmail: ambilNilai2()
+                    },
+                    function (returnya) {
+                        // alert
+                        swal({
+                            title: returnya.result == true ? "Gagal" : "Sukses",
+                            text: returnya.message,
+                            icon: returnya.result == true ? "error" : "success",
+                            button: "Baik",
+                            closeOnClickOutside: false,
+                        });
+                    });
+
+
+            })
+
+        })
+    </script>
+}

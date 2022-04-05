@@ -5,7 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Sibolga_Library.Data;
+using Sibolga_Library.Models;
 using Sibolga_Library.Repositories.AkunRepository;
+using Sibolga_Library.Services;
 using Sibolga_Library.Services.AkunService;
 using System;
 using System.Collections.Generic;
@@ -43,6 +45,10 @@ namespace Sibolga_Library
             services.AddScoped<IAkunService, AkunService>();
 
             services.AddTransient<FileService>();
+
+            services.AddTransient<EmailService>();
+
+            services.Configure<Email>(Configuration.GetSection("AturEmail"));
 
             services.AddControllersWithViews();
         }

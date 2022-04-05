@@ -418,12 +418,20 @@
     <!--END HEADER SECTION-->
 
     @RenderBody()
-   
+
     <!--Import jQuery before materialize.js-->
     <script src="~/js/main.min.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
     <script src="~/js/materialize.min.js"></script>
     <script src="~/js/custom.js"></script>
+
+    <!-- AJAX -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    @* sweetalert *@
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 
 </html>

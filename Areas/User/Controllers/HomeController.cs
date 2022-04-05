@@ -10,7 +10,7 @@ namespace Sibolga_Library.Areas.User.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize]
+        [Authorize(Roles = "User")]
         [Area("User")]
         public IActionResult Index()
         {
