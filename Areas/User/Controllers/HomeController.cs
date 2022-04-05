@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,11 +10,13 @@ namespace Sibolga_Library.Areas.User.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize(Roles = "User")]
+        [Authorize]
         [Area("User")]
         public IActionResult Index()
         {
             return View();
         }
+
+
     }
 }

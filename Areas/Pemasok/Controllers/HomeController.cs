@@ -9,7 +9,7 @@ namespace Sibolga_Library.Areas.Pemasok.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize(Roles = "Pemasok")]
+        [Authorize]
         [Area("Pemasok")]
         public IActionResult Index()
         {

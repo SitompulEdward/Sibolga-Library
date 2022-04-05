@@ -38,7 +38,7 @@
             <div class="ed-mob-menu-con">
                 <div class="ed-mm-left">
                     <div class="wed-logo">
-                        <a asp-controller="Akun" asp-action="Index">
+                        <a href="index-2.html">
                             <img src="~/images/logo.png" alt="" />
                         </a>
                     </div>
@@ -111,7 +111,7 @@
                         <div class="ed-com-t1-left">
                             <ul>
                                 <li>
-                                    <a href="#">Contact: Kota Sibolga, Jalan Ahmad Yani No.108, S.B.G</a>
+                                    <a href="#">Contact: Lake Road, Suite 180 Farmington Hills, U.S.A.</a>
                                 </li>
                                 <li>
                                     <a href="#">Phone: +101-1231-1231</a>
@@ -120,9 +120,7 @@
                         </div>
                         <div class="ed-com-t1-right">
                             <ul>
-                                <li>
-                                    <a href="#!" data-toggle="modal" data-target="#modal1">Sign In</a>
-                                </li>
+                                <li><a href="#!" data-toggle="modal" data-target="#modal2">Logout</a></li>
                             </ul>
                         </div>
                         <div class="ed-com-t1-social">
@@ -149,14 +147,14 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="wed-logo">
-                            <a asp-controller="Akun" asp-action="Index">
+                            <a href="index-2.html">
                                 <img src="~/images/logo.png" alt="" />
                             </a>
                         </div>
                         <div class="main-menu">
                             <ul>
                                 <li>
-                                    <a asp-controller="Akun" asp-action="Index">Home</a>
+                                    <a href="index-2.html">Home</a>
                                 </li>
                                 <li class="about-menu">
                                     <a href="about.html" class="mm-arr">About us</a>
@@ -174,7 +172,7 @@
                                                 </div>
                                                 <div class="mm1-com mm1-s2">
                                                     <p>Want to change the world? At Berkeley we’re doing just that. When you join the Golden Bear community, you’re part of an institution that shifts the global conversation every single day.</p>
-                                                    <a href="#" class="mm-r-m-btn">Read more</a>
+                                                    <a href="about.html" class="mm-r-m-btn">Read more</a>
                                                 </div>
                                                 <div class="mm1-com mm1-s3">
                                                     <ul>
@@ -212,7 +210,7 @@
                                                         </a>
                                                     </div>
                                                     <p>Donec lacus libero, rutrum ac sollicitudin sed, mattis non eros. Vestibulum congue nec eros quis lacinia. Mauris non tincidunt lectus. Nulla mollis, orci vitae accumsan rhoncus.</p>
-                                                    <a href="#" class="mm-r-m-btn">Read more</a>
+                                                    <a href="about.html" class="mm-r-m-btn">Read more</a>
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s1">
                                                     <div class="ed-course-in">
@@ -242,14 +240,14 @@
                                                         </a>
                                                     </div>
                                                     <p>Donec lacus libero, rutrum ac sollicitudin sed, mattis non eros. Vestibulum congue nec eros quis lacinia. Mauris non tincidunt lectus. Nulla mollis, orci vitae accumsan rhoncus.</p>
-                                                    <a href="#" class="mm-r-m-btn">Read more</a>
+                                                    <a href="seminar.html" class="mm-r-m-btn">Read more</a>
                                                 </div>
 
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="#">All Courses</a></li>
+                                <li><a href="all-courses.html">All Courses</a></li>
                                 <!--<li><a class='dropdown-button ed-sub-menu' href='#' data-activates='dropdown1'>Courses</a></li>-->
                                 <li class="cour-menu">
                                     <a href="#!" class="mm-arr">All Pages</a>
@@ -356,13 +354,13 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <a href="#">Events</a>
+                                    <a href="events.html">Events</a>
                                 </li>
                                 <li>
-                                    <a href="#">Student</a>
+                                    <a href="dashboard.html">Student</a>
                                 </li>
                                 <li>
-                                    <a href="#">Contact us</a>
+                                    <a href="contact-us.html">Contact us</a>
                                 </li>
                             </ul>
                         </div>
@@ -418,7 +416,51 @@
     <!--END HEADER SECTION-->
 
     @RenderBody()
-   
+
+    <!--SECTION LOGOUT-->
+    <section>
+        <!-- LOGOUT SECTION -->
+        <div id="modal2" class="modal fade" role="dialog">
+            <div class="log-in-pop">
+                <div class="log-in-pop-left">
+                    <h1>Are You Sure</h1>
+                    <p></p>
+                    <h4>Log-out</h4>
+                </div>
+                <div class="log-in-pop-right">
+                    <a href="#" class="pop-close" data-dismiss="modal">
+                        <img src="~/images/cancel.png" alt="" />
+                    </a>
+
+                    <div>
+                        <div class="input-field s4">
+                            <a asp-area="" asp-controller="Akun" asp-action="Logout">
+                                <input type="submit" value="Logout" class="waves-effect waves-light log-in-btn">
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- SOCIAL MEDIA SHARE -->
+    <section>
+        <div class="icon-float">
+            <ul>
+                <li><a href="#" class="sh">1k <br> Share</a> </li>
+                <li><a href="#" class="fb1"><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
+                <li><a href="#" class="gp1"><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
+                <li><a href="#" class="tw1"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
+                <li><a href="#" class="li1"><i class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
+                <li><a href="#" class="wa1"><i class="fa fa-whatsapp" aria-hidden="true"></i></a> </li>
+                <li><a href="#" class="sh1"><i class="fa fa-envelope-o" aria-hidden="true"></i></a> </li>
+            </ul>
+        </div>
+    </section>
+
     <!--Import jQuery before materialize.js-->
     <script src="~/js/main.min.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
