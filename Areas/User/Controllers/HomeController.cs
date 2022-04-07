@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Sibolga_Library.Areas.User.Controllers
 {
+    [Authorize(Roles = "User")]
+    [Area("User")]
     public class HomeController : Controller
     {
-        [Authorize(Roles = "User")]
-        [Area("User")]
         public IActionResult Index()
         {
             return View();

@@ -48,5 +48,25 @@ namespace Sibolga_Library.Helper
 
             return gabungModel.pemasok.Pemasok_Id;
         }
+
+        public static string PrimaryAdmin(Admin admin, string[] Id)
+        {
+            int temp;
+            foreach (var ids in Id)
+            {
+                temp = Int32.Parse(ids.Split("-00")[1]);
+                var psId = "PS-00" + (temp + 1);
+
+                admin.Admin_Id = psId;
+            }
+
+            if (admin.Admin_Id == null)
+            {
+                admin.Admin_Id = "PS-001";
+            }
+
+
+            return admin.Admin_Id;
+        }
     }
 }

@@ -1,0 +1,59 @@
+﻿@model GabungView
+<!--== Pemasok Details ==-->
+<div class="sb2-2-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box-inn-sp">
+                <div class="inn-title">
+                    <h4>Kontributor Details</h4>
+                    <p>All about courses, program structure, fees, best course lists (ranking), syllabus, teaching techniques and other details.</p>
+                </div>
+                <div class="tab-inn">
+                    <div class="table-responsive table-desi">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Profil</th>
+                                    <th>Id</th>
+                                    <th>Nama Lengkap</th>
+                                    <th>Email</th>
+                                    <th>Password</th>
+                                    <th>No Telp</th>
+                                    <th>ALamat</th>
+                                    <th>Details</th>
+                                    <th>Opsi</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.pemasok)
+                                {
+                                    <tr>
+                                        <td>
+                                            <span class="list-img"><img src="@item.Gambar" alt=""></span>
+                                        </td>
+                                        <td>
+                                            @*<a href="#"><span class="list-enq-name">Aerospace Engineering</span><span class="list-enq-city">Illunois, United States</span></a>*@
+                                            @item.Pemasok_Id
+                                        </td>
+                                        <td>@item.Nama_Lengkap</td>
+                                        <td>@item.Email</td>
+                                        <td>@item.Password</td>
+                                        <td>@item.No_Telp</td>
+                                        <td>@item.Alamat</td>
+                                        <td>
+                                            <a href="#"><span class="label label-success">Detail</span></a>
+                                        </td>
+                                        <td><a href="#" class="ad-st-view">Edit</a>
+                                            <span><a href="#" class="ad-st-view">Hapus</a></span>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

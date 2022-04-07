@@ -43,6 +43,14 @@ namespace Sibolga_Library.Repositories.AkunRepository
             return true;
         }
 
+        public async Task<bool> GetAdminId(Admin admin)
+        {
+            string[] Id = await _akunDb.Admin.Select(x => x.Admin_Id).ToArrayAsync();
+            BuatPrimary.PrimaryAdmin(admin, Id);
+
+            return true;
+        }
+
         public async Task<bool> BuatPemasokAsync(Pemasok data)
         {
             _akunDb.Add(data);
@@ -51,7 +59,7 @@ namespace Sibolga_Library.Repositories.AkunRepository
             return true;
         }
 
-        public async Task<bool> AksesLogin(AksesLogin data)
+        public async Task<bool> BuatAksesLogin(AksesLogin data)
         {
             _akunDb.Add(data);
             await _akunDb.SaveChangesAsync();
@@ -68,5 +76,20 @@ namespace Sibolga_Library.Repositories.AkunRepository
         {
             return await _akunDb.Roles.Where(x => x.Id == "3").FirstOrDefaultAsync();
         }
+
+        public async Task<Roles> GetRolesAdmin()
+        {
+            return await _akunDb.Roles.Where(x => x.Id == "1").FirstOrDefaultAsync();
+        }
+
+        public async Task<bool> BuatAdminAsync(Admin data)
+        {
+            _akunDb.Add(data);
+            await _akunDb.SaveChangesAsync();
+
+            return true;
+        }
+
+        
     }
 }

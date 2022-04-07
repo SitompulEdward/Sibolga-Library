@@ -1,5 +1,4 @@
 ﻿using Sibolga_Library.Models;
-using Sibolga_Library.Repositories.AdminRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +8,8 @@ namespace Sibolga_Library.Services.AdminService
 {
     public class AdminService : IAdminService
     {
-        private readonly IAdminRepository _AdminRepo;
-        public AdminService(IAdminRepository ar)
-        {
-            _AdminRepo = ar;
-        }
 
-        public bool CreateAdmin(Admin data)
+        public bool GetDataGabungView(GabungView data)
         {
             throw new NotImplementedException();
         }

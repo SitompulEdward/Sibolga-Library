@@ -47,6 +47,5 @@ namespace Sibolga_Library.Helper
             return pemasok;
         }
 
-       
     }
 }

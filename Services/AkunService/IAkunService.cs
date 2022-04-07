@@ -14,5 +14,7 @@ namespace Sibolga_Library.Services.AkunService
         bool CreatePemasok(GabungModel gabungModel, IFormFile file);
         bool createAksesLoginPemasok(GabungModel gabungModel);
         bool createAksesLoginUser(GabungModel gabungModel);
+        bool CreateAdmin(Admin admin, IFormFile file);
+        bool createAksesLoginAdmin(Admin data);
     }
 }

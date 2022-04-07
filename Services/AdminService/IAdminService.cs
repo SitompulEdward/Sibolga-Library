@@ -8,6 +8,6 @@ namespace Sibolga_Library.Services.AdminService
 {
     public interface IAdminService
     {
-        bool CreateAdmin(Admin data);
+        bool GetDataGabungView(GabungView data);
     }
 }

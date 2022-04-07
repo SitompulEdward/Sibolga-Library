@@ -18,6 +18,55 @@ namespace Sibolga_Library.Services.AkunService
             _akunRepo = repo;
             _file = file;
         }
+
+        public bool CreateAdmin(Admin admin, IFormFile file)
+        {
+            _akunRepo.GetAdminId(admin);
+
+            admin.Gambar = _file.SimpanFile(file).Result;
+
+            return _akunRepo.BuatAdminAsync(admin).Result;
+        }
+
+        public bool CreatePemasok(GabungModel gabungModel, IFormFile file)
+        {
+            BanyakBantuan.BuatPemasok(gabungModel);
+
+            _akunRepo.GetPemasokId(gabungModel);
+
+            gabungModel.pemasok.Gambar = _file.SimpanFile(file).Result;
+
+            return _akunRepo.BuatPemasokAsync(gabungModel.pemasok).Result;
+        }
+
+        public bool CreateUser(GabungModel gabungModel, IFormFile file)
+        {
+           BanyakBantuan.BuatUser(gabungModel);
+
+            _akunRepo.GetUserId(gabungModel);
+
+            gabungModel.user.Gambar = _file.SimpanFile(file).Result;
+
+            var role = "3";
+            gabungModel.user.RolesId = role;
+
+            return _akunRepo.BuatUserAysnc(gabungModel.user).Result;
+        }
+
+        public bool createAksesLoginAdmin(Admin data)
+        {
+            Roles role = _akunRepo.GetRolesAdmin().Result;
+
+            var akses = new AksesLogin()
+            {
+                Email = data.Email,
+                Password = data.Password,
+                Roles = role
+            };
+
+            return _akunRepo.BuatAksesLogin(akses).Result;
+        }
+
         public bool createAksesLoginPemasok(GabungModel gabungModel)
         {
             Roles role = _akunRepo.GetRolesPemasok().Result;
@@ -29,7 +78,7 @@ namespace Sibolga_Library.Services.AkunService
                 Roles = role
             };
 
-            return _akunRepo.AksesLogin(akses).Result;
+            return _akunRepo.BuatAksesLogin(akses).Result;
         }
 
         public bool createAksesLoginUser(GabungModel gabungModel)
@@ -43,32 +92,9 @@ namespace Sibolga_Library.Services.AkunService
                 Roles = role
             };
 
-            return _akunRepo.AksesLogin(akses).Result;
+            return _akunRepo.BuatAksesLogin(akses).Result;
         }
 
-        public bool CreatePemasok(GabungModel gabungModel, IFormFile file)
-        {
-            var ambilData = BanyakBantuan.BuatPemasok(gabungModel);
-
-            _akunRepo.GetPemasokId(gabungModel);
-
-            gabungModel.pemasok.Gambar = _file.SimpanFile(file).Result;
-
-            return _akunRepo.BuatPemasokAsync(gabungModel.pemasok).Result;
-        }
-
-        public bool CreateUser(GabungModel gabungModel, IFormFile file)
-        {
-            var ambilData = BanyakBantuan.BuatUser(gabungModel);
-
-            _akunRepo.GetUserId(gabungModel);
-
-            gabungModel.user.Gambar = _file.SimpanFile(file).Result;
-
-            var role = "3";
-            gabungModel.user.RolesId = role;
-
-            return _akunRepo.BuatUserAysnc(gabungModel.user).Result;
-        }
+       
     }
 }

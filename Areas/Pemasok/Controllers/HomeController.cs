@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Sibolga_Library.Areas.Pemasok.Controllers
 {
+    [Authorize(Roles = "Pemasok")]
+    [Area("Pemasok")]
     public class HomeController : Controller
     {
-        [Authorize(Roles = "Pemasok")]
-        [Area("Pemasok")]
         public IActionResult Index()
         {
             return View();
