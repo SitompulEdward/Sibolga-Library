@@ -92,6 +92,9 @@ namespace Sibolga_Library.Migrations
                     b.Property<string>("Pengarang")
                         .HasColumnType("text");
 
+                    b.Property<string>("Sipnosis")
+                        .HasColumnType("text");
+
                     b.Property<int>("Stock")
                         .HasColumnType("int");
 

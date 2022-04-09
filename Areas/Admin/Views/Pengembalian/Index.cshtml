@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Pengembalian>
+
+<!--== BODY INNER CONTAINER ==-->
+<div class="sb2-2">
+    <!--== breadcrumbs ==-->
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a asp-action="Index"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre">
+                <a href="#">Pengembalian</a>
+            </li>
+            <li class="page-back">
+                <a asp-action="Index"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
+    </div>
+
+    <!--== User Details ==-->
+    <div class="sb2-2-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box-inn-sp">
+                    <div class="inn-title">
+                        <h4>Buku</h4>
+                        <p>All about students like name, student id, phone, email, country, city and more</p>
+                    </div>
+                    <div class="tab-inn">
+                        <div class="table-responsive table-desi">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>User Id</th>
+                                        <th>Tanggal Peminjaman</th>
+                                        <th>Jatuh Tempo</th>
+                                        <th>Opsi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.Id</td>
+                                            <td>@item.Tgl_Pengembalian</td>
+                                            <td>@item.PeminjamanId</td>
+                                            <td>@item.Denda</td>
+                                            <td>
+                                                <span class="label label-success">Detail</span>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

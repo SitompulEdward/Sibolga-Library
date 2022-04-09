@@ -18,25 +18,25 @@ namespace Sibolga_Library.Areas.Controllers
     [Area("Admin")]
     public class HomeController : Controller
     {
-        private readonly IAkunService _service;
-        private readonly AppDbContext _context;
         private readonly EmailService _email;
+        private readonly IAdminService _adService;
+        private readonly AppDbContext _context;
         private static int _OTP;
 
-        public HomeController(IAkunService service,AppDbContext context, EmailService email)
+        public HomeController(EmailService email, IAdminService admin, AppDbContext context)
         {
-            _service = service;
             _context = context;
+            _adService = admin;
             _email = email;
         }
         public IActionResult Index()
         {
             var dataView = new GabungView();
 
-            dataView.buku = _context.Buku.ToList();
-            dataView.pemasok = _context.Pemasok.ToList();
-            dataView.peminjaman = _context.Peminjaman.ToList();
-            dataView.pengembalian = _context.Pengembalian.ToList();
+            dataView.buku = _adService.buku();
+            dataView.pemasok = _adService.pemasok();
+            dataView.peminjaman = _adService.peminjaman();
+            dataView.pengembalian = _adService.pengembalian();
 
             return View(dataView);
         }
@@ -47,14 +47,14 @@ namespace Sibolga_Library.Areas.Controllers
         }
 
         [HttpPost]
-        public IActionResult Daftar(Admin data, IFormFile image, int otp)
+        public IActionResult Daftar(Models.Admin data, IFormFile image, int otp)
         {
             if (ModelState.IsValid)
             {
                 if (_OTP == otp)
                 {
-                    _service.CreateAdmin(data,image);
-                    _service.createAksesLoginAdmin(data);
+                    _adService.CreateAdmin(data,image);
+                    _adService.createAksesLoginAdmin(data);
 
                     return RedirectToAction("Daftar");
                 }
@@ -66,7 +66,7 @@ namespace Sibolga_Library.Areas.Controllers
         [HttpPost]
         public string KirimEmailOTP(string tujuanEmail)
         {
-            var cariEmail = _context.Akses_Login.Where(x => x.Email == tujuanEmail).FirstOrDefault();
+            var cariEmail = _context.Akses_Login.FirstOrDefault(x => x.Email == tujuanEmail);
 
             if (cariEmail != null)
             {
@@ -92,5 +92,16 @@ namespace Sibolga_Library.Areas.Controllers
 
         }
 
+        public IActionResult Update()
+        {
+            return View();
+        }
+
+        public IActionResult AdminView()
+        {
+            var data = _adService.admins();
+
+            return View(data);
+        }
     }
 }

@@ -18,6 +18,7 @@ namespace Sibolga_Library.Models
         public int Stock { get; set; }
         public string Pemasok_Id { get; set; }
         public string Gambar { get; set; }
+        public string Sipnosis { get; set; }
 
         [ForeignKey("Pemasok_Id")]
         public Pemasok FkPemasokId { get; set; }

@@ -22,12 +22,18 @@
     <link href="~/css/style.css" rel="stylesheet" />
     <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
     <link href="~/css/style-mob.css" rel="stylesheet" />
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Mobile Menu -->
+    <link href="~/cssbook/mmenu.css" rel="stylesheet" type="text/css" />
+    <link href="~/cssbook/mmenu.positioning.css" rel="stylesheet" type="text/css" />
+
+    <!-- Responsive Table -->
+    <link rel="stylesheet" type="text/css" href="~/cssbbok/responsivetable.css" />
+
+    <!-- Stylesheet -->
+    <link href="~/cssbook/style.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
@@ -50,7 +56,6 @@
                             <a href="#!" class="ed-mi-close"><i class="fa fa-times"></i></a>
                             <h4>All Courses</h4>
                             <ul>
-                                
                             </ul>
                             <h4>User Account</h4>
                             <ul>
@@ -59,11 +64,9 @@
                             </ul>
                             <h4>All Pages</h4>
                             <ul>
-                               
                             </ul>
                             <h4>User Profile</h4>
                             <ul>
-                                
                             </ul>
                         </div>
                     </div>
@@ -130,63 +133,22 @@
                                     <a asp-controller="Akun" asp-action="Index">Home</a>
                                 </li>
                                 <li class="about-menu">
-                                    <a href="#" class="mm-arr">About us</a>
-                                    <!-- MEGA MENU 1 -->
-                                    <div class="mm-pos">
-                                        <div class="about-mm m-menu">
-                                            <div class="m-menu-inn">
-                                                <div class="mm1-com mm1-s1">
-                                                    <div class="ed-course-in">
-                                                        <a class="course-overlay menu-about" href="#">
-                                                            <img src="~/images/h-about.jpg" alt="">
-                                                            <span>Academics</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="mm1-com mm1-s2">
-                                                    <p>Want to change the world? At Berkeley we’re doing just that. When you join the Golden Bear community, you’re part of an institution that shifts the global conversation every single day.</p>
-                                                    <a href="#" class="mm-r-m-btn">Read more</a>
-                                                </div>
-                                                <div class="mm1-com mm1-s3">
-                                                    <ul>
-                                                    </ul>
-                                                </div>
-                                                <div class="mm1-com mm1-s4">
-                                                    <ul>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <a href="#" class="mm-arr">Tentang Kami</a>
                                 </li>
                                 <li class="admi-menu">
-                                    <a href="#" class="mm-arr">Admission</a>
-                                    <!-- MEGA MENU 1 -->
-                                    <div class="mm-pos">
-                                        <div class="admi-mm m-menu">
-                                           
-                                        </div>
-                                    </div>
+                                    <a asp-action="BukuView" class="mm-arr">Semua Buku</a>
                                 </li>
-                                <li><a href="#">All Courses</a></li>
-                                <!--<li><a class='dropdown-button ed-sub-menu' href='#' data-activates='dropdown1'>Courses</a></li>-->
                                 <li class="cour-menu">
-                                    <a href="#!" class="mm-arr">All Pages</a>
+                                    <a href="#!" data-toggle="modal" data-target="#modal1" class="mm-arr">All Pages</a>
                                     <!-- MEGA MENU 1 -->
                                     <div class="mm-pos">
                                         <div class="cour-mm m-menu">
-                                            
+
                                         </div>
                                     </div>
                                 </li>
                                 <li>
-                                    <a href="#">Events</a>
-                                </li>
-                                <li>
-                                    <a href="#">Student</a>
-                                </li>
-                                <li>
-                                    <a href="#">Contact us</a>
+                                    <a href="#!" data-toggle="modal" data-target="#modal1">Lokasi</a>
                                 </li>
                             </ul>
                         </div>
@@ -210,7 +172,6 @@
                                     </div>
                                     <div class="sf-list">
                                         <ul>
-                                            
                                         </ul>
                                     </div>
                                 </div>
@@ -233,6 +194,57 @@
     <script src="~/js/bootstrap.min.js"></script>
     <script src="~/js/materialize.min.js"></script>
     <script src="~/js/custom.js"></script>
+    <!-- jQuery Latest Version 1.x -->
+    <script type="text/javascript" src="~/jsbook/jquery-1.12.4.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script type="text/javascript" src="~/jsbook/jquery-ui.min.js"></script>
+
+    <!-- jQuery Easing -->
+    <script type="text/javascript" src="~/jsbook/jquery.easing.1.3.js"></script>
+
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="~/jsbook/bootstrap.min.js"></script>
+
+    <!-- Mobile Menu -->
+    <script type="text/javascript" src="~/jsbook/mmenu.min.js"></script>
+
+    <!-- Harvey - State manager for media queries -->
+    <script type="text/javascript" src="~/jsbook/harvey.min.js"></script>
+
+    <!-- Waypoints - Load Elements on View -->
+    <script type="text/javascript" src="~/jsbook/waypoints.min.js"></script>
+
+    <!-- Facts Counter -->
+    <script type="text/javascript" src="~/jsbook/facts.counter.min.js"></script>
+
+    <!-- MixItUp - Category Filter -->
+    <script type="text/javascript" src="~/jsbook/mixitup.min.js"></script>
+
+    <!-- Owl Carousel -->
+    <script type="text/javascript" src="~/jsbook/owl.carousel.min.js"></script>
+
+    <!-- Accordion -->
+    <script type="text/javascript" src="~/jsbook/accordion.min.js"></script>
+
+    <!-- Responsive Tabs -->
+    <script type="text/javascript" src="~/jsbook/responsive.tabs.min.js"></script>
+
+    <!-- Responsive Table -->
+    <script type="text/javascript" src="~/jsbook/responsive.table.min.js"></script>
+
+    <!-- Masonry -->
+    <script type="text/javascript" src="~/jsbook/masonry.min.js"></script>
+
+    <!-- Carousel Swipe -->
+    <script type="text/javascript" src="~/jsbook/carousel.swipe.min.js"></script>
+
+    <!-- bxSlider -->
+    <script type="text/javascript" src="~/jsbook/bxslider.min.js"></script>
+
+    <!-- Custom Scripts -->
+    <script type="text/javascript" src="~/jsbook/main.js"></script>
+
 
     <!-- AJAX -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

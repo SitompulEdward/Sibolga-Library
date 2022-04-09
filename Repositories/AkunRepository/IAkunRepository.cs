@@ -10,13 +10,13 @@ namespace Sibolga_Library.Repositories.AkunRepository
     {
         Task<bool> GetUserId(GabungModel gabungModel);
         Task<bool> GetPemasokId(GabungModel gabungModel);
-        Task<bool> GetAdminId(Admin admin);
+        
         Task<bool> BuatUserAysnc(User data);
         Task<bool> BuatPemasokAsync(Pemasok data);
-        Task<bool> BuatAdminAsync(Admin data);
+        
         Task<bool> BuatAksesLogin(AksesLogin data);
         Task<Roles> GetRolesPemasok();
         Task<Roles> GetRolesUser();
-        Task<Roles> GetRolesAdmin();
+        
     }
 }

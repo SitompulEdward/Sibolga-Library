@@ -19,14 +19,7 @@ namespace Sibolga_Library.Services.AkunService
             _file = file;
         }
 
-        public bool CreateAdmin(Admin admin, IFormFile file)
-        {
-            _akunRepo.GetAdminId(admin);
-
-            admin.Gambar = _file.SimpanFile(file).Result;
-
-            return _akunRepo.BuatAdminAsync(admin).Result;
-        }
+        
 
         public bool CreatePemasok(GabungModel gabungModel, IFormFile file)
         {
@@ -53,19 +46,7 @@ namespace Sibolga_Library.Services.AkunService
             return _akunRepo.BuatUserAysnc(gabungModel.user).Result;
         }
 
-        public bool createAksesLoginAdmin(Admin data)
-        {
-            Roles role = _akunRepo.GetRolesAdmin().Result;
-
-            var akses = new AksesLogin()
-            {
-                Email = data.Email,
-                Password = data.Password,
-                Roles = role
-            };
-
-            return _akunRepo.BuatAksesLogin(akses).Result;
-        }
+        
 
         public bool createAksesLoginPemasok(GabungModel gabungModel)
         {

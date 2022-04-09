@@ -1,0 +1,35 @@
+﻿@model GabungModel
+
+
+<!--POPULAR COURSES-->
+@foreach (var item in Model.buku)
+{
+    int cek = 0;
+    if (cek < 4)
+    {
+        <div class="home-top-cour">
+            <!--POPULAR COURSES IMAGE-->
+            <div class="col-md-3"> <img src="@item.Gambar" alt=""> </div>
+            <!--POPULAR COURSES: CONTENT-->
+            <div class="col-md-9 home-top-cour-desc">
+                <a href="#">
+                    <h3>@item.Judul_Buku</h3>
+                </a>
+                <h4>@item.Pengarang / @item.Tahun_Terbit</h4>
+                <p>@item.Sipnosis</p> <span class="home-top-cour-rat">4.2</span>
+                <div class="hom-list-share">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i> Pinjam</a> </li>
+                        <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i>10 Aavailable</a> </li>
+                        <li><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i> 570</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        cek++;
+    }
+}
+
+
+
+

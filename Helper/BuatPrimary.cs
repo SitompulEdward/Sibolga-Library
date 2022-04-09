@@ -25,7 +25,6 @@ namespace Sibolga_Library.Helper
                 gabungModel.user.User_Id = "US-001";
             }
 
-
             return gabungModel.user.User_Id;
         }
 
@@ -45,7 +44,6 @@ namespace Sibolga_Library.Helper
                 gabungModel.pemasok.Pemasok_Id = "PS-001";
             }
 
-
             return gabungModel.pemasok.Pemasok_Id;
         }
 
@@ -55,18 +53,36 @@ namespace Sibolga_Library.Helper
             foreach (var ids in Id)
             {
                 temp = Int32.Parse(ids.Split("-00")[1]);
-                var psId = "PS-00" + (temp + 1);
+                var psId = "AD-00" + (temp + 1);
 
                 admin.Admin_Id = psId;
             }
 
             if (admin.Admin_Id == null)
             {
-                admin.Admin_Id = "PS-001";
+                admin.Admin_Id = "AD-001";
             }
 
-
             return admin.Admin_Id;
+        }
+
+        public static string PrimaryBuku(Buku buku, string[] Id)
+        {
+            int temp;
+            foreach (var ids in Id)
+            {
+                temp = Int32.Parse(ids.Split("-00")[1]);
+                var psId = "BK-00" + (temp + 1);
+
+                buku.Id = psId;
+            }
+
+            if (buku.Id == null)
+            {
+                buku.Id = "BK-001";
+            }
+
+            return buku.Id;
         }
     }
 }

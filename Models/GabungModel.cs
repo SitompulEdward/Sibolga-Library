@@ -10,6 +10,11 @@ namespace Sibolga_Library.Models
         public User user { get; set; }
         public Pemasok pemasok { get; set; }
         public AksesLogin login { get; set; }
+        public List<Buku> buku { get; set; }
+        public GabungModel()
+        {
+            buku = new List<Buku>();
+        }
     }
 
     public class GabungView

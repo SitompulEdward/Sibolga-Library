@@ -6,9 +6,17 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Sibolga_Library.Data;
 using Sibolga_Library.Models;
+using Sibolga_Library.Repositories.AdminRepository;
 using Sibolga_Library.Repositories.AkunRepository;
+using Sibolga_Library.Repositories.BukuRepository;
+using Sibolga_Library.Repositories.PeminjamanRepository;
+using Sibolga_Library.Repositories.PengembalianRepository;
 using Sibolga_Library.Services;
+using Sibolga_Library.Services.AdminService;
 using Sibolga_Library.Services.AkunService;
+using Sibolga_Library.Services.BukuService;
+using Sibolga_Library.Services.PeminjamanService;
+using Sibolga_Library.Services.PengembalianService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,13 +44,24 @@ namespace Sibolga_Library
             services.AddAuthentication("CookieAuth").
                 AddCookie("CookieAuth", option =>
                 {
-                    //option.LoginPath = "Akun";
+                    option.LoginPath = "/Akun/Login";
                     //option.AccessDeniedPath = "Akun/Dilarang";
                 });
 
             services.AddScoped<IAkunRepository, AkunRepository>();
-           
             services.AddScoped<IAkunService, AkunService>();
+
+            services.AddScoped<IAdminRepository, AdminRepository>();
+            services.AddScoped<IAdminService, AdminService>();
+
+            services.AddScoped<IBukuRepository, BukuRepository>();
+            services.AddScoped<IBukuService, BukuService>();
+
+            services.AddScoped<IPeminjamanRepository, PeminjamanRepository>();
+            services.AddScoped<IPeminjamanService, PeminjamanService>();
+
+            services.AddScoped<IPengembalianRepository, PengembalianRepository>();
+            services.AddScoped<IPengembalianService, PengembalianService>();
 
             services.AddTransient<FileService>();
 

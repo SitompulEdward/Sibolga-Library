@@ -31,6 +31,7 @@ namespace Sibolga_Library.Controllers
         public IActionResult Index()
         {
             GabungModel Models = new GabungModel();
+            Models.buku = _context.Buku.ToList();
 
             return View(Models);
         }
@@ -155,6 +156,14 @@ namespace Sibolga_Library.Controllers
             await HttpContext.SignOutAsync();
 
             return Redirect("/");
+        }
+
+        public IActionResult BukuView()
+        {
+            GabungModel Models = new GabungModel();
+            Models.buku = _context.Buku.ToList();
+            
+            return View(Models);
         }
     }
 }

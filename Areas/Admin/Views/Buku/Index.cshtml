@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Buku>
+<!--== BODY INNER CONTAINER ==-->
+<div class="sb2-2">
+    <!--== breadcrumbs ==-->
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a asp-action="Index"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre">
+                <a href="#">Buku</a>
+            </li>
+            <li class="page-back">
+                <a asp-action="Index"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
+    </div>
+
+    <!--== User Details ==-->
+    <div class="sb2-2-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box-inn-sp">
+                    <div class="inn-title">
+                        <h4>Buku</h4>
+                        <p>All about students like name, student id, phone, email, country, city and more</p>
+                    </div>
+                    <div class="tab-inn">
+                        <div class="table-responsive table-desi">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Sampul</th>
+                                        <th>Judul</th>
+                                        <th>Pengarang</th>
+                                        <th>Penerbit</th>
+                                        <th>Tahun Terbit</th>
+                                        <th>Id</th>
+                                        <th>Stock</th>
+                                        <th>Kontributor Id</th>
+                                        <th>Opsi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr>
+                                        <td>
+                                            <span class="list-img"><img src="@item.Gambar" alt=""></span>
+                                        </td>
+                                        <td>@item.Judul_Buku</td>
+                                        <td>@item.Pengarang</td>
+                                        <td>@item.Penerbit</td>
+                                        <td>@item.Tahun_Terbit</td>
+                                        <td>@item.Id</td>
+                                        <td>@item.Stock</td>
+                                        <td>@item.Pemasok_Id</td>
+                                        <td>
+                                            <span class="label label-success">Detail</span>
+                                        </td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
