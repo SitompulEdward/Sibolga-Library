@@ -72,7 +72,7 @@ namespace Sibolga_Library.Helper
             foreach (var ids in Id)
             {
                 temp = Int32.Parse(ids.Split("-00")[1]);
-                var psId = "BK-00" + (temp + 1);
+                var psId = "BK-00" + (temp +  1);
 
                 buku.Id = psId;
             }
@@ -83,6 +83,44 @@ namespace Sibolga_Library.Helper
             }
 
             return buku.Id;
+        }
+
+        public static string PrimaryPeminjaman(Peminjaman data, string[] Id)
+        {
+            int temp;
+            foreach (var ids in Id)
+            {
+                temp = Int32.Parse(ids.Split("-00")[1]);
+                var psId = "PJ-00" + (temp + 1);
+
+                data.Id = psId;
+            }
+
+            if (data.Id == null)
+            {
+                data.Id = "PJ-001";
+            }
+
+            return data.Id;
+        }
+
+        public static string PrimaryPengembalian(Pengembalian data, string[] Id)
+        {
+            int temp;
+            foreach (var ids in Id)
+            {
+                temp = Int32.Parse(ids.Split("-00")[1]);
+                var psId = "PG-00" + (temp + 1);
+
+                data.Id = psId;
+            }
+
+            if (data.Id == null)
+            {
+                data.Id = "PG-001";
+            }
+
+            return data.Id;
         }
     }
 }

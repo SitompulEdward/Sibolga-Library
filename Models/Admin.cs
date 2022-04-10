@@ -22,4 +22,13 @@ namespace Sibolga_Library.Models
         [ForeignKey("RolesId")]
         public Roles FkRoles { get; set; }
     }
+
+    public class DetailAdmin
+    {
+        public List<Admin> admin { get; set; }
+        public DetailAdmin()
+        {
+            admin = new List<Admin>();
+        }
+    }
 }

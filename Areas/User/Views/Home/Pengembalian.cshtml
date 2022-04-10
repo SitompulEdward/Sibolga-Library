@@ -1,0 +1,56 @@
+﻿@model Pengembalian
+
+@{
+    Layout = "_LayoutUser";
+}
+
+
+<!--SECTION START-->
+<section class="c-all p-semi p-event">
+    <div class="semi-inn">
+        <div class="semi-com semi-left">
+            <div class="all-title quote-title qu-new semi-text eve-reg-text">
+                <h2>Pengembalian</h2>
+                <p>"Terima Kasih telah membaca dan melestarikan buku kami"</p>
+                <div class="semi-deta eve-deta">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <p class="help-line">Selamat Membaca Lagi</p>
+            </div>
+        </div>
+        <div class="semi-com semi-right">
+            <div class="n-form-com semi-form">
+                <div class="col s12">
+                    <form asp-controller="Home" asp-action="Pengembalian" method="post" class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input asp-for="PeminjamanId" type="text" class="form-control" placeholder="Peminjaman Id" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input asp-for="Tgl_Pengembalian" type="date" class="form-control" placeholder="Tanggal Kembali" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input asp-for="Denda" type="text" class="form-control" placeholder="Denda">
+                            </div>
+                        </div>
+                        <div class="form-group mar-bot-0">
+                            <div class="col-md-12">
+                                <i class="waves-effect waves-light light-btn waves-input-wrapper" style=""><input type="submit" value="APPLY NOW" class="waves-button-input"></i>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--SECTION END-->

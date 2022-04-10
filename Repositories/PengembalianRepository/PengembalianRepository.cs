@@ -1,4 +1,6 @@
-﻿using Sibolga_Library.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Sibolga_Library.Data;
+using Sibolga_Library.Helper;
 using Sibolga_Library.Models;
 using System;
 using System.Collections.Generic;
@@ -14,6 +16,24 @@ namespace Sibolga_Library.Repositories.PengembalianRepository
         {
             _context = context;
         }
+
+        public async Task<bool> CreatePengembalianAsync(Pengembalian data)
+        {
+            _context.Add(data);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> GetPengembalianId(Pengembalian data)
+        {
+            string[] id = await _context.Pengembalian.Select(x => x.Id).ToArrayAsync();
+
+            BuatPrimary.PrimaryPengembalian(data, id);
+
+            return true;
+        }
+
         public List<Pengembalian> pengembalian()
         {
             return _context.Pengembalian.ToList();

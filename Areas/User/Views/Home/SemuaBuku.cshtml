@@ -1,0 +1,59 @@
+﻿@model GabungModel
+
+<section>
+    <div class="head-2">
+        <div class="container">
+            <div class="head-2-inn head-2-inn-padd-top">
+                <h1>Daftar Semua Buku</h1>
+                <p>Fusce id sem at ligula laoreet hendrerit venenatis sed purus. Ut pellentesque maximus lacus, nec pharetra augue.</p>
+                <div class="event-head-sub">
+                    <ul>
+                        <li>Genre : Komik & Novel, Fiksi & Sastra</li>
+                        <li>Genre : Fantasi, Fiksi Sains</li>
+                        <li>Genre : Romantis, Misteri & Thriller</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- POPULAR COURSES -->
+<section class="pop-cour">
+    <div class="container com-sp pad-bot-70">
+        <div class="row">
+            <div class="con-title">
+                <h2></h2>
+                <p></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    @foreach (var item in Model.buku)
+                    {
+                        <div class="home-top-cour">
+                            <!--POPULAR COURSES IMAGE-->
+                            <div class="col-md-3"> <img src="@item.Gambar" alt=""> </div>
+                            <!--POPULAR COURSES: CONTENT-->
+                            <div class="col-md-9 home-top-cour-desc">
+                                <a href="#">
+                                    <h3>@item.Judul_Buku</h3>
+                                </a>
+                                <h4>@item.Pengarang / @item.Tahun_Terbit</h4>
+                                <p style="font-size:16px">@item.Sipnosis</p> <span class="home-top-cour-rat">4.2</span>
+                                <div class="col-sm-5 hom-list-share">
+                                    <div>
+                                        <ul>
+                                            <li><a asp-action="Detail" class="read-line-btn">Pinjam Buku</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

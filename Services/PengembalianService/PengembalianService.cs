@@ -14,6 +14,14 @@ namespace Sibolga_Library.Services.PengembalianService
         {
             _repo = repo;
         }
+
+        public Task<bool> CreatePengembalian(Pengembalian data)
+        {
+            _repo.GetPengembalianId(data);
+            
+            return _repo.CreatePengembalianAsync(data);
+        }
+
         public List<Pengembalian> pengembalian()
         {
             return _repo.pengembalian();

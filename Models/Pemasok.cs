@@ -22,4 +22,5 @@ namespace Sibolga_Library.Models
         [ForeignKey("RolesId")]
         public Roles FkRoles { get; set; }
     }
+
 }

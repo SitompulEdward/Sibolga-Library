@@ -7,6 +7,7 @@ using Sibolga_Library.Helper;
 using Sibolga_Library.Models;
 using Sibolga_Library.Services;
 using Sibolga_Library.Services.AkunService;
+using Sibolga_Library.Services.BukuService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +19,13 @@ namespace Sibolga_Library.Controllers
     public class AkunController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly IBukuService _bukuService;
         private readonly IAkunService _service;
         private readonly EmailService _email;
         private static int _OTP;
-        public AkunController(AppDbContext db, IAkunService service, EmailService email)
+        public AkunController(AppDbContext db, IAkunService service, EmailService email,IBukuService buku)
         {
+            _bukuService = buku;
             _context = db;
             _service = service;
             _email = email;
@@ -31,7 +34,7 @@ namespace Sibolga_Library.Controllers
         public IActionResult Index()
         {
             GabungModel Models = new GabungModel();
-            Models.buku = _context.Buku.ToList();
+            Models.buku = _bukuService.buku();
 
             return View(Models);
         }
@@ -161,7 +164,7 @@ namespace Sibolga_Library.Controllers
         public IActionResult BukuView()
         {
             GabungModel Models = new GabungModel();
-            Models.buku = _context.Buku.ToList();
+            Models.buku = _bukuService.buku();
             
             return View(Models);
         }

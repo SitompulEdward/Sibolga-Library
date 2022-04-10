@@ -3,7 +3,7 @@
 
 
 <head>
-    <title>Education Master Template</title>
+    <title>Libraria User</title>
     <!-- META TAGS -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +11,7 @@
     <meta name="description" content="Education master is one of the best educational html template, it's suitable for all education websites like university,college,school,online education,tution center,distance education,computer education">
     <meta name="keyword" content="education html template, university template, college template, school template, online education template, tution center template">
     <!-- FAV ICON(BROWSER TAB ICON) -->
-    <link rel="shortcut icon" href="~/images/fav.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="~/images/favicon.ico" type="image/x-icon">
     <!-- GOOGLE FONT -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700" rel="stylesheet">
     <!-- FONTAWESOME ICONS -->
@@ -125,68 +125,14 @@
                         <div class="main-menu">
                             <ul>
                                 <li>
-                                    <a href="#">Home</a>
-                                </li>
-                                <li class="about-menu">
-                                    <a href="#" class="mm-arr">About us</a>
-                                    <!-- MEGA MENU 1 -->
-                                    <div class="mm-pos">
-                                        <div class="about-mm m-menu">
-                                            <div class="m-menu-inn">
-                                                <div class="mm1-com mm1-s1">
-                                                    <div class="ed-course-in">
-                                                        <a class="course-overlay menu-about" href="#">
-                                                            <img src="~/images/h-about.jpg" alt="">
-                                                            <span>Academics</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="mm1-com mm1-s2">
-                                                    <p>Want to change the world? At Berkeley we’re doing just that. When you join the Golden Bear community, you’re part of an institution that shifts the global conversation every single day.</p>
-                                                    <a href="#" class="mm-r-m-btn">Read more</a>
-                                                </div>
-                                                <div class="mm1-com mm1-s3">
-                                                    <ul>
-                                                        
-                                                    </ul>
-                                                </div>
-                                                <div class="mm1-com mm1-s4">
-                                                    <ul>
-                                                        
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <a asp-controller="Home" asp-action="Index">Home</a>
                                 </li>
                                 <li class="admi-menu">
-                                    <a href="#" class="mm-arr">Admission</a>
-                                    <!-- MEGA MENU 1 -->
-                                    <div class="mm-pos">
-                                        <div class="admi-mm m-menu">
-                                           
-                                        </div>
-                                    </div>
+                                    <a asp-controller="Home" asp-action="SemuaBuku" class="mm-arr">Semua Buku</a>
                                 </li>
-                                <li><a href="#">All Courses</a></li>
-                                <!--<li><a class='dropdown-button ed-sub-menu' href='#' data-activates='dropdown1'>Courses</a></li>-->
-                                <li class="cour-menu">
-                                    <a href="#!" class="mm-arr">All Pages</a>
-                                    <!-- MEGA MENU 1 -->
-                                    <div class="mm-pos">
-                                        <div class="cour-mm m-menu">
-                                            
-                                        </div>
-                                    </div>
-                                </li>
+                                <li><a asp-controller="Home" asp-action="Pinjam">Pinjam Buku</a></li>
                                 <li>
-                                    <a href="#">Events</a>
-                                </li>
-                                <li>
-                                    <a href="#">Student</a>
-                                </li>
-                                <li>
-                                    <a href="#">Contact us</a>
+                                    <a asp-controller="Home" asp-action="Pengembalian">Pengembalian</a>
                                 </li>
                             </ul>
                         </div>

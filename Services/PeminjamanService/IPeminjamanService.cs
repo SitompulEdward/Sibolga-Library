@@ -9,5 +9,6 @@ namespace Sibolga_Library.Services.PeminjamanService
     public interface IPeminjamanService
     {
         List<Peminjaman> peminjaman();
+        bool CreatePeminjaman(Peminjaman data);
     }
 }

@@ -1,8 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-    Layout = "_LayoutAdmin";
-}
-
+﻿@model Admin
 
 <!--== BODY INNER CONTAINER ==-->
 <div class="sb2-2">
@@ -10,72 +6,75 @@
     <div class="sb2-2-2">
         <ul>
             <li>
-                <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                <a asp-action="Index"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
             </li>
             <li class="active-bre">
-                <a asp-action="Index"> Dashboard</a>
+                <a href="#"> Tambah Akun Baru Admin</a>
             </li>
             <li class="page-back">
-                <a href="#"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                <a asp-action="Daftar"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
             </li>
         </ul>
     </div>
 
-    <!--== Admin Details Update ==-->
+    <!--== User Details ==-->
     <div class="sb2-2-3">
         <div class="row">
             <div class="col-md-12">
                 <div class="box-inn-sp admin-form">
                     <div class="inn-title">
-                        <h4>Admin Setting</h4>
+                        <h4>Form Akun Baru</h4>
                         <p>Here you can edit your website basic details URL, Phone, Email, Address, User and password and more</p>
                     </div>
                     <div class="tab-inn">
-                        <form asp-action="Update" enctype="multipart/form-data">
+                        <form asp-controller="Home" asp-action="Update" method="post" enctype="multipart/form-data">
+                            <input type="hidden" asp-for="Admin_Id" />
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="first_name" type="text" class="validate" required>
-                                    <label for="first_name" class="">Nama Lengkap</label>
+                                    <input asp-for="Nama_Lengkap" type="text" class="validate" required>
+                                    <label class="">Nama Lengkap</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="phone" type="number" class="validate" required>
-                                    <label for="phone">No Telp</label>
+                                    <input asp-for="No_Telp" type="number" class="validate" required>
+                                    <label class="">Nomor Handphone</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input type="text" class="validate" required>
-                                    <label for="cphone" class="">Email</label>
+                                    <input asp-for="Alamat" type="text" class="validate" required>
+                                    <label class="">Alamat</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="password" type="password" class="validate">
-                                    <label for="password" class="">Password</label>
+                                    <input asp-for="Email" type="text"  class="validate" required>
+                                    <label class="">Email</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input type="text" class="validate">
-                                    <label>Alamat</label>
+                                    <input asp-for="Password" type="text" class="validate" required>
+                                    <label class="">Password</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="file-field input-field col s12">
                                     <div class="btn admin-upload-btn">
                                         <span>File</span>
-                                        <input type="file" name="image" accept=".jpg, .png, .svg" multiple required>
+                                        <input type="file" name="image" accept=".jpg, .png, .svg" multiple>
                                     </div>
                                     <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text" placeholder="Foto Profil">
+                                        <input class="file-path validate" asp-for="Gambar" type="text" placeholder="Foto Profil">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <i class="waves-effect waves-light btn-large waves-input-wrapper" style=""><input type="submit" class="waves-button-input"></i>
+                                    <i class="waves-effect waves-light btn-large waves-input-wrapper" style="">
+                                        <input type="submit" class="waves-button-input">
+                                    </i>
                                 </div>
                             </div>
                         </form>
@@ -84,3 +83,4 @@
             </div>
         </div>
     </div>
+</div>

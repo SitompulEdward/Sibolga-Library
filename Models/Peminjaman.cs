@@ -14,8 +14,14 @@ namespace Sibolga_Library.Models
         public string User_Id { get; set; }
         public DateTime Tgl_Peminjaman { get; set; }
         public DateTime Jatuh_Tempo { get; set; }
+        public string No_Telp { get; set; }
+        public string Buku_Id { get; set; }
+        public int Bayar { get; set; }
 
         [ForeignKey("User_Id")]
         public User FkUserId { get; set; }
+
+        [ForeignKey("Buku_Id")]
+        public Buku FkBukuId { get; set; }
     }
 }

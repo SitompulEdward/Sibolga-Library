@@ -9,8 +9,8 @@ using Sibolga_Library.Data;
 namespace Sibolga_Library.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220408102134_sipnosis")]
-    partial class sipnosis
+    [Migration("20220409211000_alltabel")]
+    partial class alltabel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -129,30 +129,6 @@ namespace Sibolga_Library.Migrations
                     b.ToTable("Detail_Pemasok");
                 });
 
-            modelBuilder.Entity("Sibolga_Library.Models.Detail_Peminjaman", b =>
-                {
-                    b.Property<int>("No")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("BukuId")
-                        .HasColumnType("varchar(767)");
-
-                    b.Property<int>("Jumlah_Buku")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PeminjamanId")
-                        .HasColumnType("varchar(767)");
-
-                    b.HasKey("No");
-
-                    b.HasIndex("BukuId");
-
-                    b.HasIndex("PeminjamanId");
-
-                    b.ToTable("Detail_Peminjaman");
-                });
-
             modelBuilder.Entity("Sibolga_Library.Models.Pemasok", b =>
                 {
                     b.Property<string>("Pemasok_Id")
@@ -213,8 +189,17 @@ namespace Sibolga_Library.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("varchar(767)");
 
+                    b.Property<int>("Bayar")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Buku_Id")
+                        .HasColumnType("varchar(767)");
+
                     b.Property<DateTime>("Jatuh_Tempo")
                         .HasColumnType("datetime");
+
+                    b.Property<string>("No_Telp")
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("Tgl_Peminjaman")
                         .HasColumnType("datetime");
@@ -223,6 +208,8 @@ namespace Sibolga_Library.Migrations
                         .HasColumnType("varchar(767)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Buku_Id");
 
                     b.HasIndex("User_Id");
 
@@ -371,21 +358,6 @@ namespace Sibolga_Library.Migrations
                     b.Navigation("FkPemasokId");
                 });
 
-            modelBuilder.Entity("Sibolga_Library.Models.Detail_Peminjaman", b =>
-                {
-                    b.HasOne("Sibolga_Library.Models.Buku", "FkBuku")
-                        .WithMany()
-                        .HasForeignKey("BukuId");
-
-                    b.HasOne("Sibolga_Library.Models.Peminjaman", "FkPeminjaman")
-                        .WithMany()
-                        .HasForeignKey("PeminjamanId");
-
-                    b.Navigation("FkBuku");
-
-                    b.Navigation("FkPeminjaman");
-                });
-
             modelBuilder.Entity("Sibolga_Library.Models.Pemasok", b =>
                 {
                     b.HasOne("Sibolga_Library.Models.Roles", "FkRoles")
@@ -406,9 +378,15 @@ namespace Sibolga_Library.Migrations
 
             modelBuilder.Entity("Sibolga_Library.Models.Peminjaman", b =>
                 {
+                    b.HasOne("Sibolga_Library.Models.Buku", "FkBukuId")
+                        .WithMany()
+                        .HasForeignKey("Buku_Id");
+
                     b.HasOne("Sibolga_Library.Models.User", "FkUserId")
                         .WithMany()
                         .HasForeignKey("User_Id");
+
+                    b.Navigation("FkBukuId");
 
                     b.Navigation("FkUserId");
                 });

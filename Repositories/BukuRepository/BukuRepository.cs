@@ -22,9 +22,20 @@ namespace Sibolga_Library.Repositories.BukuRepository
             return _context.Buku.ToList();
         }
 
+
         public async Task<bool> CreateBukuAsync(Buku buku)
         {
             _context.Add(buku);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> DeleteBuku(string id)
+        {
+            var cari = await _context.Buku.FirstOrDefaultAsync(x => x.Id == id);
+
+            _context.Remove(cari);
             await _context.SaveChangesAsync();
 
             return true;
@@ -35,6 +46,19 @@ namespace Sibolga_Library.Repositories.BukuRepository
             string[] id = await _context.Buku.Select(x => x.Id).ToArrayAsync();
 
             BuatPrimary.PrimaryBuku(buku,id);
+
+            return true;
+        }
+
+        public async Task<Buku> SelectBukuId(string id)
+        {
+            return await _context.Buku.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<bool> UpdateBukuAsync(Buku buku)
+        {
+            _context.Buku.Update(buku);
+            await _context.SaveChangesAsync();
 
             return true;
         }

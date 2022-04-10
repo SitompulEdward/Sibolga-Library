@@ -1,46 +1,51 @@
 ﻿@model GabungView
 
-<!--== Pengembalian Details ==-->
-<div class="col-md-6">
-    <div class="box-inn-sp">
-        <div class="inn-title">
-            <h4>Pengembalian Details</h4>
-            <p>Education is about teaching, learning skills and knowledge.</p>
-        </div>
-        <div class="tab-inn">
-            <div class="table-responsive table-desi">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Tanggal Pengembalian</th>
-                            <th>Id Peminjaman</th>
-                            <th>Denda</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.pengembalian)
-                        {
-                            <tr>
-                                <td>
-                                    @item.Id
-                                </td>
-                                <td>@item.Tgl_Pengembalian</td>
-                                <td>
-                                    @item.PeminjamanId
-                                </td>
-                                <td>
-                                   @item.Denda
-                                </td>
-                                <td>
-                                    <span class="label label-success">Active</span>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+
+    <!--== Pengembalian Details ==-->
+    <div class="sb2-2-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box-inn-sp">
+                    <div class="inn-title">
+                        <h4>Pengembalian Details</h4>
+                        <p>Education is about teaching, learning skills and knowledge.</p>
+                    </div>
+                    <div class="tab-inn">
+                        <div class="table-responsive table-desi">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Tanggal Pengembalian</th>
+                                        <th>Id Peminjaman</th>
+                                        <th>Denda</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.pengembalian)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @item.Id
+                                            </td>
+                                            <td>@item.Tgl_Pengembalian</td>
+                                            <td>
+                                                @item.PeminjamanId
+                                            </td>
+                                            <td>
+                                                @item.Denda
+                                            </td>
+                                            <td>
+                                                <span class="label label-success">Active</span>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>

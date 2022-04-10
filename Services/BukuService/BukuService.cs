@@ -23,6 +23,7 @@ namespace Sibolga_Library.Services.BukuService
             return _repo.buku();
         }
 
+
         public bool CreateBuku(Buku data, IFormFile file)
         {
             _repo.GetBukuId(data);
@@ -30,6 +31,23 @@ namespace Sibolga_Library.Services.BukuService
             data.Gambar = _file.SimpanFile(file).Result;
 
             return _repo.CreateBukuAsync(data).Result;
+        }
+
+        public Task<bool> DeleteBuku(string id)
+        {
+            return _repo.DeleteBuku(id);
+        }
+
+        public Task<Buku> Detail(string id)
+        {
+            return _repo.SelectBukuId(id);
+        }
+
+        public async Task<bool> UpdateBuku(Buku buku)
+        {
+           await _repo.UpdateBukuAsync(buku);
+            
+            return true;
         }
     }
 

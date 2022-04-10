@@ -1,0 +1,73 @@
+﻿@model Buku
+<!--== BODY INNER CONTAINER ==-->
+<!--== User Details ==-->
+<div class="sb2-2-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box-inn-sp admin-form">
+                <div class="inn-title">
+                    <h4>Tambah Buku </h4>
+                    <p>Here you can edit your website basic details URL, Phone, Email, Address, User and password and more</p>
+                </div>
+                <div class="tab-inn">
+                    <form asp-action="CreateBuku" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input asp-for="Judul_Buku" type="text" value="" class="validate" required>
+                                <label class="">Judul Buku</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input asp-for="Pengarang" type="text" value="" class="validate" required>
+                                <label class="">Pengarang</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input asp-for="Penerbit" type="text" value="" class="validate" required>
+                                <label class="">Penerbit</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input asp-for="Tahun_Terbit" type="text" value="" class="validate" required>
+                                <label class="">Tahun Terbit</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input asp-for="Pemasok_Id" type="text" value="" class="validate" required>
+                                <label class="">Kontributor Id</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input asp-for="Stock" type="text" value="" class="validate" required>
+                                <label class="">Stock</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="file-field input-field col s12">
+                                <div class="btn admin-upload-btn">
+                                    <span>File</span>
+                                    <input type="file" name="image" accept=".jpg, .png, .svg" multiple required>
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text" placeholder="Sampul Buku">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea asp-for="Sipnosis" class="materialize-textarea"></textarea>
+                                <label>Sipnosis:</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="waves-effect waves-light btn-large waves-input-wrapper" style=""><input type="submit" class="waves-button-input"></i>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

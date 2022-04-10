@@ -1,0 +1,76 @@
+﻿@model GabungModel
+
+
+<!--== BODY INNER CONTAINER ==-->
+<div class="sb2-2">
+    <!--== breadcrumbs ==-->
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a asp-controller="Home" asp-action="Index"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre">
+                <a href="#"> Dashboard</a>
+            </li>
+            <li class="page-back">
+                <a asp-controller="Buku" asp-action="Index"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
+    </div>
+
+    <!--== User Details ==-->
+    <div class="sb2-2-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box-inn-sp admin-form">
+                    <div class="inn-title">
+                        <h4>Detail Buku</h4>
+                        <p></p>
+                    </div>
+                    <div class="tab-inn">
+                        @foreach(var item in Model.buku){ 
+                        <form>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input type="text" value="@item.Judul_Buku" class="validate" readonly>
+                                    <label for="first_name" class=""></label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input type="text" value="@item.Pengarang" class="validate" readonly>
+                                    <label for="last_name" class=""></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input type="text" value="@item.Penerbit" class="validate" readonly>
+                                    <label for="phone"></label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input type="text" class="validate" value="@item.Tahun_Terbit" readonly>
+                                    <label for="cphone" class=""></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="city" type="text" value="@item.Pemasok_Id" class="validate" readonly>
+                                    <label for="city" class=""></label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="country" type="text" value="@item.Stock" class="validate" readonly>
+                                    <label for="country" class=""></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea class="materialize-textarea" readonly>@item.Sipnosis</textarea>
+                                    <label></label>
+                                </div>
+                            </div>
+                        </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

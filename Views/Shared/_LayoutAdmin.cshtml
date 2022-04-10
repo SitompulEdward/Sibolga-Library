@@ -68,7 +68,6 @@
                 <!-- Dropdown Structure -->
                 <ul id='top-menu' class='dropdown-content top-menu-sty'>
                     <li>
-                        <a asp-action="Update" class="waves-effect"><i class="fa fa-cogs" aria-hidden="true"></i>Admin Setting</a>
                     </li>
                     <li class="divider"></li>
                     <li>
@@ -133,9 +132,6 @@
                                 <ul>
                                     <li><a asp-controller="Peminjaman" asp-action="Index">Peminjaman</a></li>
                                     <li><a asp-controller="Pengembalian" asp-action="Index">Pengembalian</a></li>
-                                    <li><a href="#">Detail Peminjaman</a></li>
-                                    <li><a href="#">Riwayat Penarikan</a></li>
-                                    <li><a href="#">Detail Kontributor</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -144,10 +140,10 @@
                             <div class="collapsible-body left-sub-menu">
                                 <ul>
                                     <li>
-                                        <a href="#">User</a>
+                                        <a asp-controller="User" asp-action="Index">User</a>
                                     </li>
                                     <li>
-                                        <a href="#">Kontributor</a>
+                                        <a asp-controller="Pemasok" asp-action="Index">Kontributor</a>
                                     </li>
                                 </ul>
                             </div>

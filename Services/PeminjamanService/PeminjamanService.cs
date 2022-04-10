@@ -14,6 +14,15 @@ namespace Sibolga_Library.Services.PeminjamanService
         {
             _repo = repo;
         }
+
+        public bool CreatePeminjaman(Peminjaman data)
+        {
+            _repo.GetPeminjamanId(data);
+            data.Tgl_Peminjaman = DateTime.Now;
+
+            return _repo.CreatePeminjamanAsync(data).Result;
+        }
+
         public List<Peminjaman> peminjaman()
         {
             return _repo.peminjaman();

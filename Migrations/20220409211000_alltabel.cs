@@ -4,10 +4,22 @@ using MySql.EntityFrameworkCore.Metadata;
 
 namespace Sibolga_Library.Migrations
 {
-    public partial class all_table : Migration
+    public partial class alltabel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Roles",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "varchar(767)", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Roles", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Admin",
                 columns: table => new
@@ -26,6 +38,27 @@ namespace Sibolga_Library.Migrations
                     table.PrimaryKey("PK_Admin", x => x.Admin_Id);
                     table.ForeignKey(
                         name: "FK_Admin_Roles_RolesId",
+                        column: x => x.RolesId,
+                        principalTable: "Roles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Akses_Login",
+                columns: table => new
+                {
+                    No = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Email = table.Column<string>(type: "text", nullable: true),
+                    Password = table.Column<string>(type: "text", nullable: true),
+                    RolesId = table.Column<string>(type: "varchar(767)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Akses_Login", x => x.No);
+                    table.ForeignKey(
+                        name: "FK_Akses_Login_Roles_RolesId",
                         column: x => x.RolesId,
                         principalTable: "Roles",
                         principalColumn: "Id",
@@ -91,7 +124,8 @@ namespace Sibolga_Library.Migrations
                     Tahun_Terbit = table.Column<string>(type: "text", nullable: true),
                     Stock = table.Column<int>(type: "int", nullable: false),
                     Pemasok_Id = table.Column<string>(type: "varchar(767)", nullable: true),
-                    Gambar = table.Column<string>(type: "text", nullable: true)
+                    Gambar = table.Column<string>(type: "text", nullable: true),
+                    Sipnosis = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -152,43 +186,25 @@ namespace Sibolga_Library.Migrations
                     Id = table.Column<string>(type: "varchar(767)", nullable: false),
                     User_Id = table.Column<string>(type: "varchar(767)", nullable: true),
                     Tgl_Peminjaman = table.Column<DateTime>(type: "datetime", nullable: false),
-                    Jatuh_Tempo = table.Column<DateTime>(type: "datetime", nullable: false)
+                    Jatuh_Tempo = table.Column<DateTime>(type: "datetime", nullable: false),
+                    No_Telp = table.Column<string>(type: "text", nullable: true),
+                    Buku_Id = table.Column<string>(type: "varchar(767)", nullable: true),
+                    Bayar = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Peminjaman", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Peminjaman_User_User_Id",
-                        column: x => x.User_Id,
-                        principalTable: "User",
-                        principalColumn: "User_Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Detail_Peminjaman",
-                columns: table => new
-                {
-                    No = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    PeminjamanId = table.Column<string>(type: "varchar(767)", nullable: true),
-                    BukuId = table.Column<string>(type: "varchar(767)", nullable: true),
-                    Jumlah_Buku = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Detail_Peminjaman", x => x.No);
-                    table.ForeignKey(
-                        name: "FK_Detail_Peminjaman_Buku_BukuId",
-                        column: x => x.BukuId,
+                        name: "FK_Peminjaman_Buku_Buku_Id",
+                        column: x => x.Buku_Id,
                         principalTable: "Buku",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Detail_Peminjaman_Peminjaman_PeminjamanId",
-                        column: x => x.PeminjamanId,
-                        principalTable: "Peminjaman",
-                        principalColumn: "Id",
+                        name: "FK_Peminjaman_User_User_Id",
+                        column: x => x.User_Id,
+                        principalTable: "User",
+                        principalColumn: "User_Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -233,9 +249,29 @@ namespace Sibolga_Library.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Roles",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { "1", "Admin" });
+
+            migrationBuilder.InsertData(
+                table: "Roles",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { "2", "Pemasok" });
+
+            migrationBuilder.InsertData(
+                table: "Roles",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { "3", "User" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Admin_RolesId",
                 table: "Admin",
+                column: "RolesId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Akses_Login_RolesId",
+                table: "Akses_Login",
                 column: "RolesId");
 
             migrationBuilder.CreateIndex(
@@ -249,16 +285,6 @@ namespace Sibolga_Library.Migrations
                 column: "Pemasok_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Detail_Peminjaman_BukuId",
-                table: "Detail_Peminjaman",
-                column: "BukuId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Detail_Peminjaman_PeminjamanId",
-                table: "Detail_Peminjaman",
-                column: "PeminjamanId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Pemasok_RolesId",
                 table: "Pemasok",
                 column: "RolesId");
@@ -267,6 +293,11 @@ namespace Sibolga_Library.Migrations
                 name: "IX_Pembayaran_PeminjamanId",
                 table: "Pembayaran",
                 column: "PeminjamanId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Peminjaman_Buku_Id",
+                table: "Peminjaman",
+                column: "Buku_Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Peminjaman_User_Id",
@@ -295,10 +326,10 @@ namespace Sibolga_Library.Migrations
                 name: "Admin");
 
             migrationBuilder.DropTable(
-                name: "Detail_Pemasok");
+                name: "Akses_Login");
 
             migrationBuilder.DropTable(
-                name: "Detail_Peminjaman");
+                name: "Detail_Pemasok");
 
             migrationBuilder.DropTable(
                 name: "Pembayaran");
@@ -310,16 +341,19 @@ namespace Sibolga_Library.Migrations
                 name: "Riwayat_Penarikan");
 
             migrationBuilder.DropTable(
+                name: "Peminjaman");
+
+            migrationBuilder.DropTable(
                 name: "Buku");
 
             migrationBuilder.DropTable(
-                name: "Peminjaman");
+                name: "User");
 
             migrationBuilder.DropTable(
                 name: "Pemasok");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Roles");
         }
     }
 }

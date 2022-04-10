@@ -9,14 +9,18 @@ using Sibolga_Library.Models;
 using Sibolga_Library.Repositories.AdminRepository;
 using Sibolga_Library.Repositories.AkunRepository;
 using Sibolga_Library.Repositories.BukuRepository;
+using Sibolga_Library.Repositories.PemasokRepository;
 using Sibolga_Library.Repositories.PeminjamanRepository;
 using Sibolga_Library.Repositories.PengembalianRepository;
+using Sibolga_Library.Repositories.UserRepository;
 using Sibolga_Library.Services;
 using Sibolga_Library.Services.AdminService;
 using Sibolga_Library.Services.AkunService;
 using Sibolga_Library.Services.BukuService;
+using Sibolga_Library.Services.PemasokService;
 using Sibolga_Library.Services.PeminjamanService;
 using Sibolga_Library.Services.PengembalianService;
+using Sibolga_Library.Services.UserService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,6 +67,12 @@ namespace Sibolga_Library
             services.AddScoped<IPengembalianRepository, PengembalianRepository>();
             services.AddScoped<IPengembalianService, PengembalianService>();
 
+            services.AddScoped<IPemasokRepository, PemasokRepository>();
+            services.AddScoped<IPemasokService, PemasokService>();
+
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
+
             services.AddTransient<FileService>();
 
             services.AddTransient<EmailService>();
@@ -83,6 +93,8 @@ namespace Sibolga_Library
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+            app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();

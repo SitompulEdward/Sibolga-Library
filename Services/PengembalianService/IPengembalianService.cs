@@ -9,5 +9,6 @@ namespace Sibolga_Library.Services.PengembalianService
     public interface IPengembalianService
     {
         List<Pengembalian> pengembalian();
+        Task<bool> CreatePengembalian(Pengembalian data);
     }
 }

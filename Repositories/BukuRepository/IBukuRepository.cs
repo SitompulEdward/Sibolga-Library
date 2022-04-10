@@ -11,5 +11,8 @@ namespace Sibolga_Library.Repositories.BukuRepository
         List<Buku> buku();
         Task<bool> GetBukuId(Buku buku);
         Task<bool> CreateBukuAsync(Buku buku);
+        Task<Buku> SelectBukuId(string id);
+        Task<bool> UpdateBukuAsync(Buku buku);
+        Task<bool> DeleteBuku(string id);
     }
 }

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Pemasok>
+
+<!--== BODY INNER CONTAINER ==-->
+<div class="sb2-2">
+    <!--== breadcrumbs ==-->
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a asp-controller="Home" asp-action="Index"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre">
+                <a href="#">Kontributor</a>
+            </li>
+            <li class="page-back">
+                <a asp-controller="Home" asp-action="Index"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
+    </div>
+
+    <!--== User Details ==-->
+    <div class="sb2-2-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box-inn-sp">
+                    <div class="inn-title">
+                        <h4>Kontributor</h4>
+                        <p>All about students like name, student id, phone, email, country, city and more</p>
+                    </div>
+                    <div class="tab-inn">
+                        <div class="table-responsive table-desi">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Profile</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>Email</th>
+                                        <th>No Telp</th>
+                                        <th>Alamat</th>
+                                        <th>Kontributor Id</th>
+                                        <th>Opsi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <span class="list-img"><img src="@item.Gambar" alt=""></span>
+                                            </td>
+                                            <td>@item.Nama_Lengkap</td>
+                                            <td>@item.Email</td>
+                                            <td>@item.No_Telp</td>
+                                            <td>@item.Alamat</td>
+                                            <td>@item.Pemasok_Id</td>
+                                            <td>
+                                                <a asp-controller="Buku" asp-action="Detail" asp-route-id="@item.Pemasok_Id"><span class="label label-primary">Detail</span></a>
+                                                <a asp-controller="Buku" asp-action="Delete" asp-route-id="@item.Pemasok_Id">
+                                                    <span class="label label-danger" onclick="if (!confirm('Yakin Akan Menghapus Kontributor ini ?')) { return false; }">Hapus</span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

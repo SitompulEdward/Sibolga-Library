@@ -69,5 +69,28 @@ namespace Sibolga_Library.Repositories.AdminRepository
         {
             return _context.Admin.ToList();
         }
+
+        public async Task<Admin> SelectAdminId(string id)
+        {
+            return await _context.Admin.FirstOrDefaultAsync(x => x.Admin_Id == id);
+        }
+
+        public async Task<bool> UpdateAdmin(Admin data)
+        {
+            _context.Admin.Update(data);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> DeleteAdmin(string id)
+        {
+            var cari = await _context.Admin.FirstOrDefaultAsync(x => x.Admin_Id == id);
+
+            _context.Remove(cari);
+            await _context.SaveChangesAsync();
+            
+            return true;
+        }
     }
 }

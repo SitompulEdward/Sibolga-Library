@@ -1,0 +1,64 @@
+﻿@model DetailAdmin
+
+
+<!--== BODY INNER CONTAINER ==-->
+<div class="sb2-2">
+    <!--== breadcrumbs ==-->
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a asp-action="Index"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre">
+                <a href="#">Admin Detail</a>
+            </li>
+            <li class="page-back">
+                <a asp-action="Daftar"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
+    </div>
+
+    <!--== User Details ==-->
+    <div class="sb2-2-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box-inn-sp admin-form">
+                    <div class="inn-title">
+                        <h4>Form Akun Baru</h4>
+                        <p>Here you can edit your website basic details URL, Phone, Email, Address, User and password and more</p>
+                    </div>
+                    <div class="tab-inn">
+                        @foreach (var item in Model.admin) { 
+                        <form  method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" class="validate" value="@item.Nama_Lengkap" readonly>
+                                    <label class="">Nama Lengkap</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="number" class="validate" value="@item.No_Telp" readonly>
+                                    <label class="">Nomor Handphone</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" value="@item.Alamat" class="validate" readonly>
+                                    <label class="">Alamat</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" value="@item.Email" class="validate" readonly>
+                                    <label class="">Email</label>
+                                </div>
+                            </div>
+                        </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

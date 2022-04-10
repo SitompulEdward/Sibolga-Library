@@ -24,7 +24,7 @@
             <div class="col-md-12">
                 <div class="box-inn-sp">
                     <div class="inn-title">
-                        <h4>Student Details</h4>
+                        <h4>Admin</h4>
                         <p>All about students like name, student id, phone, email, country, city and more</p>
                     </div>
                     <div class="tab-inn">
@@ -38,8 +38,7 @@
                                         <th>Email</th>
                                         <th>Alamat</th>
                                         <th>Id</th>
-                                        <th>Status</th>
-                                        <th>View</th>
+                                        <th>Opsi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -55,9 +54,12 @@
                                             <td>@Html.DisplayFor(modelItem => item.Alamat)</td>
                                             <td>@Html.DisplayFor(modelItem => item.Admin_Id)</td>
                                             <td>
-                                                <span class="label label-success">Active</span>
+                                                <a asp-controller="Home" asp-action="Detail" asp-route-id="@item.Admin_Id"><span class="label label-primary">Detail</span></a>
+                                                <a asp-controller="Home" asp-action="Delete" asp-route-id="@item.Admin_Id">
+                                                    <span class="label label-danger" onclick="if (!confirm('Yakin Akan Menghapus Akun ini ?')) { return false; }">Hapus</span>
+                                                </a>
+                                                <a asp-controller="Home" asp-action="Update" asp-route-id="@item.Admin_Id"><span class="label label-success">Edit</span></a>
                                             </td>
-                                            <td><a href="#" class="ad-st-view">View</a></td>
                                         </tr>
                                     }
                                 </tbody>

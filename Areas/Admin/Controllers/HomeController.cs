@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Sibolga_Library.Areas.Controllers
 {
@@ -23,10 +24,10 @@ namespace Sibolga_Library.Areas.Controllers
         private readonly AppDbContext _context;
         private static int _OTP;
 
-        public HomeController(EmailService email, IAdminService admin, AppDbContext context)
+        public HomeController(EmailService email, IAdminService ad, AppDbContext context)
         {
             _context = context;
-            _adService = admin;
+            _adService = ad;
             _email = email;
         }
         public IActionResult Index()
@@ -92,8 +93,35 @@ namespace Sibolga_Library.Areas.Controllers
 
         }
 
-        public IActionResult Update()
+        public async Task<IActionResult> Update(string id)
         {
+            var cari = await _adService.SelectAdminId(id);
+
+            if (cari == null)
+            {
+                return NotFound();
+            }
+
+            return View(cari);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(Models.Admin admin)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await _adService.UpdateAdmin(admin);
+                }
+                catch
+                {
+                    return NotFound();
+                }
+
+                return RedirectToAction("Index");
+            }
+
             return View();
         }
 
@@ -102,6 +130,31 @@ namespace Sibolga_Library.Areas.Controllers
             var data = _adService.admins();
 
             return View(data);
+        }
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            await _adService.DeleteAdmin(id);
+
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> Detail(string id)
+        {
+            var cari = await _adService.SelectAdminId(id);
+
+            if (cari == null)
+            {
+                return NotFound();
+            }
+
+            var data = new DetailAdmin();
+
+            data.admin = await _context.Admin.Where(x => x.Admin_Id == id).ToListAsync();
+
+
+            return View(data);
+
         }
     }
 }

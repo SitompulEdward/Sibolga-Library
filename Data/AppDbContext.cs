@@ -23,7 +23,6 @@ namespace Sibolga_Library.Data
         public virtual DbSet<Peminjaman> Peminjaman { get; set; }
         public virtual DbSet<Pengembalian> Pengembalian { get; set; }
         public virtual DbSet<Pembayaran> Pembayaran { get; set; }
-        public virtual DbSet<Detail_Peminjaman> Detail_Peminjaman { get; set; }
         public virtual DbSet<Detail_Pemasok> Detail_Pemasok { get; set; }
         public virtual DbSet<Riwayat_Penarikan> Riwayat_Penarikan { get; set; }
 

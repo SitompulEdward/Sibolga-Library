@@ -17,5 +17,8 @@ namespace Sibolga_Library.Repositories.AdminRepository
         List<Peminjaman> peminjaman();
         List<Pengembalian> pengembalian();
         List<Admin> admin();
+        Task<Admin> SelectAdminId(string id);
+        Task<bool> UpdateAdmin(Admin data);
+        Task<bool> DeleteAdmin(string id);
     }
 }

@@ -1,40 +1,48 @@
 ﻿@model GabungView
 <!--== Peminjaman Details ==-->
-<div class="col-md-6">
-    <div class="box-inn-sp">
-        <div class="inn-title">
-            <h4>Peminjaman Details</h4>
-            <p>Randomised words which don't look even slightly believable. If you are going to use a passage</p>
-        </div>
-        <div class="tab-inn">
-            <div class="table-responsive table-desi">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Id User</th>
-                            <th>Tanggal Peminjaman</th>
-                            <th>Jatuh Tempo</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.peminjaman)
-                        {
-                            <tr>
-                                <td>
-                                    @item.Id
-                                </td>
-                                <td>@item.User_Id</td>
-                                <td>@item.Tgl_Peminjaman</td>
-                                <td>@item.Jatuh_Tempo</td>
-                                <td>
-                                    <span class="label label-success">Active</span>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+<div class="sb2-2-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box-inn-sp">
+                <div class="inn-title">
+                    <h4>Peminjaman Details</h4>
+                    <p>Randomised words which don't look even slightly believable. If you are going to use a passage</p>
+                </div>
+                <div class="tab-inn">
+                    <div class="table-responsive table-desi">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Id User</th>
+                                    <th>No Telp</th>
+                                    <th>Tanggal Peminjaman</th>
+                                    <th>Jatuh Tempo</th>
+                                    <th>Pembayaran</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.peminjaman)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.Id
+                                        </td>
+                                        <td>@item.User_Id</td>
+                                        <td>@item.No_Telp</td>
+                                        <td>@item.Tgl_Peminjaman</td>
+                                        <td>@item.Jatuh_Tempo</td>
+                                        <td>@item.Bayar</td>
+                                        <td>
+                                            <span class="label label-success">Active</span>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

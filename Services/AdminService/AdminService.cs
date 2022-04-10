@@ -55,6 +55,13 @@ namespace Sibolga_Library.Services.AdminService
             return _adRepo.BuatAksesLogin(akses).Result;
         }
 
+        public async Task<bool> DeleteAdmin(string id)
+        {
+            await _adRepo.DeleteAdmin(id);
+            
+            return true;
+        }
+
         public List<Pemasok> pemasok()
         {
             return _adRepo.pemasok();
@@ -68,6 +75,18 @@ namespace Sibolga_Library.Services.AdminService
         public List<Pengembalian> pengembalian()
         {
             return _adRepo.pengembalian();
+        }
+
+        public Task<Admin> SelectAdminId(string id)
+        {
+            return _adRepo.SelectAdminId(id);
+        }
+
+        public async Task<bool> UpdateAdmin(Admin data)
+        {
+            await _adRepo.UpdateAdmin(data);
+
+            return true;
         }
     }
 }

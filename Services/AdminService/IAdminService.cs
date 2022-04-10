@@ -16,5 +16,8 @@ namespace Sibolga_Library.Services.AdminService
         List<Admin> admins();
         bool CreateAdmin(Admin admin, IFormFile file);
         bool createAksesLoginAdmin(Admin data);
+        Task<Admin> SelectAdminId(string id);
+        Task<bool> UpdateAdmin(Admin data);
+        Task<bool> DeleteAdmin(string id);
     }
 }

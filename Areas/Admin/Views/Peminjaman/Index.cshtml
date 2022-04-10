@@ -22,7 +22,7 @@
             <div class="col-md-12">
                 <div class="box-inn-sp">
                     <div class="inn-title">
-                        <h4>Buku</h4>
+                        <h4>Peminjaman</h4>
                         <p>All about students like name, student id, phone, email, country, city and more</p>
                     </div>
                     <div class="tab-inn">
@@ -46,7 +46,10 @@
                                             <td>@item.Tgl_Peminjaman</td>
                                             <td>@item.Jatuh_Tempo</td>
                                             <td>
-                                                <span class="label label-success">Detail</span>
+                                                <a asp-controller="Buku" asp-action="Detail" asp-route-id="@item.Id"><span class="label label-primary">Detail</span></a>
+                                                <a asp-controller="Buku" asp-action="Delete" asp-route-id="@item.Id">
+                                                    <span class="label label-danger" onclick="if (!confirm('Yakin Akan Menghapus Kontributor ini ?')) { return false; }">Hapus</span>
+                                                </a>
                                             </td>
                                         </tr>
                                     }

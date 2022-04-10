@@ -11,5 +11,8 @@ namespace Sibolga_Library.Services.BukuService
     {
         List<Buku> buku();
         bool CreateBuku(Buku data, IFormFile file);
+        Task<Buku> Detail(string id);
+        Task<bool> UpdateBuku(Buku buku);
+        Task<bool> DeleteBuku(string id);
     }
 }
